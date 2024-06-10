@@ -89,19 +89,19 @@ a {
 button[type="button"] {
     width: 100%;
     padding: 10px;
-    background-color: transparent; /* Sem cor de fundo */
-    color: #007bff; /* Texto em azul */
+    background-color: transparent; 
+    color: #007bff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 10px;
-    font-size: 16px; /* Tamanho da fonte ajustável conforme necessário */
-    text-align: center; /* Garantir que o texto esteja centralizado */
+    font-size: 16px;
+    text-align: center;
 }
 
 button[type="button"]:hover {
-    background-color: #e8f0fe; /* Cor de fundo leve no hover para destaque */
-    text-decoration: underline; /* Sublinhar ao passar o mouse para imitar um link */
+    background-color: #e8f0fe; 
+    text-decoration: underline; 
 }
 
 

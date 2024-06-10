@@ -3,10 +3,9 @@
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 5px;
-    border-bottom: 2px solid #ccc; /* Linha separadora */
+    border-bottom: 2px solid #ccc;
 }
 
-/* Remova a borda do último elemento para manter a estética */
 .form-section:last-child {
     border-bottom: none;
 }

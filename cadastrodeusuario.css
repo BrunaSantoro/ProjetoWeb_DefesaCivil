@@ -6,7 +6,7 @@ body, html {
 }
 
 .container {
-    max-width: 900px; /* Limita a largura máxima do formulário */
+    max-width: 900px; 
     margin: 20px auto;
     padding: 20px;
     background-color: #ffffff;
@@ -22,31 +22,30 @@ h1 {
 .form-row {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap; /* Permite que os itens se ajustem em telas menores */
+    flex-wrap: wrap; 
     margin-bottom: 10px;
 }
 
 .form-row label {
-    min-width: 120px; /* Garante que o rótulo tenha largura mínima */
+    min-width: 120px; 
     margin-right: 10px;
 }
 
 .form-row input, 
 .form-row select {
-    flex: 1; /* Faz o input e select ocuparem o espaço restante */
+    flex: 1; 
     padding: 8px;
     margin-right: 10px;
     border: 1px solid #ccc;
 }
 
-/* Ajusta a última margem dos inputs para alinhamento */
 .form-row input:last-child, 
 .form-row select:last-child {
     margin-right: 0;
 }
 
 textarea {
-    resize: vertical; /* Permite ajustar verticalmente */
+    resize: vertical; 
 }
 
 .form-actions {
