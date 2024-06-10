@@ -1,0 +1,69 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 900px; /* Limita a largura máxima do formulário */
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Permite que os itens se ajustem em telas menores */
+    margin-bottom: 10px;
+}
+
+.form-row label {
+    min-width: 120px; /* Garante que o rótulo tenha largura mínima */
+    margin-right: 10px;
+}
+
+.form-row input, 
+.form-row select, 
+.form-row textarea {
+    flex: 1; /* Faz o input, select e textarea ocuparem o espaço restante */
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+}
+
+/* Ajusta a última margem dos inputs para alinhamento */
+.form-row input:last-child, 
+.form-row select:last-child, 
+.form-row textarea:last-child {
+    margin-right: 0;
+}
+
+textarea {
+    resize: vertical; /* Permite ajustar verticalmente */
+}
+
+.form-actions {
+    text-align: right;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

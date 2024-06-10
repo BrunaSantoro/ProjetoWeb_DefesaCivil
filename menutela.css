@@ -1,0 +1,45 @@
+/* Estilos básicos para o corpo e a página inteira */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    color: #333;
+    height: 100vh; /* Faz com que a altura da página seja igual à altura da tela */
+    display: flex; /* Habilita o layout flexível */
+}
+
+/* Estilos para o menu lateral */
+#sidebar {
+    background-color: #007bff; /* Azul */
+    color: white; /* Letras brancas */
+    padding: 10px;
+    width: 250px; /* Largura fixa para o menu lateral */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* Sombra para um pouco de profundidade */
+}
+
+#sidebar ul {
+    list-style: none; /* Remove marcadores de lista */
+    padding: 0;
+}
+
+#sidebar ul li a {
+    display: block; /* Faz cada link preencher o espaço horizontal inteiro */
+    text-decoration: none; /* Remove sublinhado de links */
+    color: white; /* Cor do texto */
+    padding: 10px; /* Espaçamento interno */
+    font-size: 14px; /* Tamanho menor de fonte */
+    white-space: nowrap; /* Evita quebra de texto em múltiplas linhas */
+}
+
+#sidebar ul li a:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+}
+
+/* Estilos para o conteúdo principal */
+#content {
+    flex-grow: 1; /* Ocupa o espaço restante */
+    background-color: #f9f9f9; /* Cor de fundo mais clara */
+    padding: 20px; /* Espaçamento interno */
+    overflow-y: auto; /* Adiciona rolagem vertical se necessário */
+}

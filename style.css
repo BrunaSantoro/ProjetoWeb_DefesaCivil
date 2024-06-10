@@ -1,0 +1,107 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+}
+
+.left-side {
+    background-color: #005699;
+    color: white;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.right-side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logo img {
+    width: 50%;
+    margin-bottom: 80px;
+}
+
+h1 {
+    margin: 5px 0;
+    font-size: 24px;
+}
+
+p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.login-form {
+    width: 300px;
+}
+
+.login-form h2 {
+    margin-bottom: 10px;
+}
+
+.login-form p {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #005699;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #004080;
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #005699;
+    text-decoration: none;
+}
+
+button[type="button"] {
+    width: 100%;
+    padding: 10px;
+    background-color: transparent; /* Sem cor de fundo */
+    color: #007bff; /* Texto em azul */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px; /* Tamanho da fonte ajustável conforme necessário */
+    text-align: center; /* Garantir que o texto esteja centralizado */
+}
+
+button[type="button"]:hover {
+    background-color: #e8f0fe; /* Cor de fundo leve no hover para destaque */
+    text-decoration: underline; /* Sublinhar ao passar o mouse para imitar um link */
+}
+
+
