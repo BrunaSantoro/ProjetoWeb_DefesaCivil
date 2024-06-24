@@ -42,21 +42,6 @@ body, html {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-}
-
-.container {
-    max-width: 900px; 
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
 h1 {
     color: #333;
     text-align: center;
@@ -66,21 +51,22 @@ h1 {
 .form-row {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap; 
-    margin-bottom: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 10px; 
 }
 
 .form-row label {
-    min-width: 120px; 
+    min-width: 120px;
     margin-right: 10px;
 }
 
 .form-row input, 
 .form-row select {
-    flex: 1; 
+    flex: 1;
     padding: 8px;
     margin-right: 10px;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
+    box-sizing: border-box;
 }
 
 .form-row input:last-child, 
@@ -88,8 +74,14 @@ h1 {
     margin-right: 0;
 }
 
+.form-row .form-group {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 48%;
+}
+
 textarea {
-    resize: vertical; 
+    resize: vertical;
 }
 
 .form-actions {
@@ -107,4 +99,23 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+    .form-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-row label {
+        text-align: left;
+        margin-right: 0;
+    }
+
+    .form-row input, 
+    .form-row select {
+        width: 100%;
+        margin-top: 10px;
+        margin-left: 0;
+    }
 }
