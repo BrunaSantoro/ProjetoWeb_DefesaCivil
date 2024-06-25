@@ -39,7 +39,13 @@ body, html {
     margin: 20px auto;
     padding: 20px;
     background-color: #ffffff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
 }
 
 .form-group {
@@ -52,12 +58,12 @@ body, html {
 .column {
     display: flex;
     flex-direction: column;
-    flex-basis: 48%; /* Ajusta a base para quase metade da largura do container para cada coluna */
-    margin-right: 2%; /* Espaçamento entre as colunas */
+    flex-basis: 48%; 
+    margin-right: 4%; 
 }
 
 .column:last-child {
-    margin-right: 0; /* Remove o espaço à direita da última coluna */
+    margin-right: 0;
 }
 
 .form-group label {
@@ -68,11 +74,15 @@ body, html {
 .form-group input[type="date"],
 .form-group select,
 .form-group textarea {
-    width: 98%; /* Garante que cada campo preencha totalmente sua coluna */
+    width: 98%; 
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+.form-group textarea {
+    height: 150px; 
 }
 
 .form-actions {

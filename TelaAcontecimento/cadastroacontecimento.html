@@ -16,62 +16,45 @@
         </ul>
     </nav>
     <div class="container">
-        <h1>Cadastro de Acontecimento</h1>
+        <h1 style="text-align: center;">Cadastro de Acontecimento</h1>
         <form action="#" method="POST">
             <div class="form-group">
                 <div class="column">
                     <label for="nome_atendente">Nome do atendente:</label>
                     <input id="nome_atendente" type="text" placeholder="Pegar automático com base no login">
-                
                     <label for="codigo">Código de identificação:</label>
                     <input id="codigo" type="text">
-
                     <label for="classe">Classe de acontecimento:</label>
                     <select id="classe"></select>
-
                     <label for="grupo">Grupo:</label>
                     <select id="grupo"></select>
+                    <label for="data_solicitacao">Data da solicitação:</label>
+                    <input id="data_solicitacao" type="date">
+                    <label for="data_acontecimento">Data do acontecimento:</label>
+                    <input id="data_acontecimento" type="date">
+                    <label for="solicitante">Solicitante de atendimento:</label>
+                    <input id="solicitante" type="text">
+                    <label for="cpf">Cadastro de Pessoa Física (CPF):</label>
+                    <input id="cpf" type="text">
                 </div>
                 <div class="column">
                     <label for="subgrupo">Subgrupo:</label>
                     <select id="subgrupo"></select>
-
                     <label for="tipo">Tipo:</label>
                     <select id="tipo"></select>
-
                     <label for="subtipo">Subtipo:</label>
                     <select id="subtipo"></select>
-
                     <label for="canal">Canal de solicitação:</label>
                     <select id="canal"></select>
+                    <label for="rua">Rua:</label>
+                    <input id="rua" type="text">
+                    <label for="numero">Número:</label>
+                    <input id="numero" type="text">
+                    <label for="complemento">Complemento:</label>
+                    <input id="complemento" type="text">
                 </div>
             </div>
             <div class="form-group">
-                <div class="column">
-                    <label for="data_solicitacao">Data da solicitação:</label>
-                    <input id="data_solicitacao" type="date">
-                
-                    <label for="data_acontecimento">Data do acontecimento:</label>
-                    <input id="data_acontecimento" type="date">
-                </div>
-                <div class="column">
-                    <label for="solicitante">Solicitante de atendimento:</label>
-                    <input id="solicitante" type="text">
-                
-                    <label for="cpf">Cadastro de Pessoa Física (CPF):</label>
-                    <input id="cpf" type="text">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="rua">Rua:</label>
-                <input id="rua" type="text">
-                
-                <label for="numero">Número:</label>
-                <input id="numero" type="text">
-                
-                <label for="complemento">Complemento:</label>
-                <input id="complemento" type="text">
-                
                 <label for="observacoes">Observações/Relatos:</label>
                 <textarea id="observacoes"></textarea>
             </div>
