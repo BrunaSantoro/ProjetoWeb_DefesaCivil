@@ -72,8 +72,7 @@ h1 {
 
 .form-group input[type="text"],
 .form-group input[type="date"],
-.form-group select,
-.form-group textarea {
+.form-group select {
     width: 98%; 
     padding: 8px;
     margin-bottom: 10px;
