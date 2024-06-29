@@ -1,0 +1,105 @@
+/* src/components/auth/login.css */
+.containerLogin {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-width: 1980px; /* Ajuste conforme necessário */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0px;
+  overflow: hidden;
+}
+
+.left-side {
+  background-color: #005699;
+  color: white;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.right-side {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.logo img {
+  width: 70%;
+  margin-bottom: 15px;
+}
+
+h1 {
+  margin: 10px 0;
+  font-size: 24px;
+}
+
+p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.login-form {
+  width: 300px;
+}
+
+.login-form h2 {
+  margin-bottom: 10px;
+}
+
+.login-form p {
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #555;
+}
+
+input[type="email"], input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #005699;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #004080;
+}
+
+a {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  color: #005699;
+  text-decoration: none;
+}
+
+button[type="button"] {
+  width: 100%;
+  padding: 10px;
+  background-color: transparent; 
+  color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+
+button[type="button"]:hover {
+  background-color: #e8f0fe; 
+  text-decoration: underline; 
+}
