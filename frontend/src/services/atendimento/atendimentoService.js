@@ -1,11 +1,9 @@
 // src/services/atendimento/atendimentoService.js
-import axios from 'axios';
-
-const API_URL = 'http://localhost:3000'; // Substitua pela URL do seu servidor
+import api from '../api';
 
 export const fetchAtendimentos = async (searchTerm, currentPage, limit = 10) => {
   try {
-    const response = await axios.get(`${API_URL}/atendimentos/search`, {
+    const response = await api.get('/atendimentos/search', {
       params: {
         term: searchTerm,
         page: currentPage,

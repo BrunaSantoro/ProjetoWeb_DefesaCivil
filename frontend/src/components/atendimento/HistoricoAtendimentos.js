@@ -3,12 +3,15 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../Navbar';
 import { fetchAtendimentos } from '../../services/atendimento/atendimentoService';
 import './historicoAtendimentos.css'; // Estilos para o componente HistoricoAtendimentos
+import AtendimentoPopup from './AtendimentoPopup'; // Importa o componente de popup
 
 const HistoricoAtendimentos = () => {
   const [atendimentos, setAtendimentos] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [selectedAtendimento, setSelectedAtendimento] = useState(null); // Estado para o atendimento selecionado
+  const [showPopup, setShowPopup] = useState(false); // Estado para controlar a visibilidade do popup
 
   useEffect(() => {
     loadAtendimentos();
@@ -30,6 +33,16 @@ const HistoricoAtendimentos = () => {
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
+  };
+
+  const handleOpenPopup = (atendimento) => {
+    setSelectedAtendimento(atendimento);
+    setShowPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+    setSelectedAtendimento(null);
   };
 
   return (
@@ -70,7 +83,7 @@ const HistoricoAtendimentos = () => {
                 <td>{atendimento.cidade}</td>
                 <td>{atendimento.atendente}</td>
                 <td>
-                  <button>Histórico</button>
+                  <button onClick={() => handleOpenPopup(atendimento)}>Histórico</button>
                   <button>Relatório</button>
                 </td>
               </tr>
@@ -89,6 +102,7 @@ const HistoricoAtendimentos = () => {
           ))}
         </div>
       </div>
+      {showPopup && <AtendimentoPopup atendimento={selectedAtendimento} onClose={handleClosePopup} />}
     </div>
   );
 };

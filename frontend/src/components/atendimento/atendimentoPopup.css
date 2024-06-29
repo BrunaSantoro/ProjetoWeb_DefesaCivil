@@ -1,0 +1,124 @@
+/* src/components/atendimento/atendimentoPopup.css */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup-content {
+    position: relative;
+    width: 1094px;
+    height: 397px;
+    background: #FFFFFF;
+    box-shadow: 1px 1px 1px rgba(48, 48, 48, 0.25);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 25px;
+    height: 25px;
+    background: #FFFFFF;
+    border: 2px solid #555555;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+  
+  .popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .popup-header h2 {
+    margin: 0;
+  }
+  
+  .popup-body {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .popup-section {
+    display: flex;
+    flex-direction: column;
+    width: 32%;
+  }
+  
+  .popup-section h3 {
+    margin-top: 0;
+  }
+  
+  .popup-section p {
+    margin: 5px 0;
+  }
+  
+  .line {
+    height: 0.5px;
+    width: 100%;
+    background: #999999;
+    margin: 10px 0;
+  }
+  
+  .detail-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .detail-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .acontecimento .detail-icon {
+    background: #CFDDF2;
+  }
+  
+  .familia .detail-icon {
+    background: #F08D86;
+  }
+  
+  .atendimento .detail-icon {
+    background: #8CD79C;
+  }
+  
+  .section-title {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+    margin-bottom: 10px;
+  }
+  
+  .detail-text {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+  }  
