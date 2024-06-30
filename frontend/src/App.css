@@ -1,0 +1,14 @@
+/* src/App.css */
+.main-content {
+  display: flex;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+.content.full-width {
+  margin-left: 0;
+  padding: 0;
+}

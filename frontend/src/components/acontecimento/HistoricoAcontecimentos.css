@@ -1,0 +1,13 @@
+.container {
+  margin-top: 20px;
+}
+
+.table {
+  margin-top: 20px;
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}

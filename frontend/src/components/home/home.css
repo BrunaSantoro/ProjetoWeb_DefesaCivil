@@ -1,0 +1,40 @@
+/* src/components/home/Home.css */
+.home-container {
+  padding: 20px;
+  margin-left: 250px; /* Compensar a largura da sidebar */
+  transition: margin-left 0.3s;
+}
+
+.sidebar.closed ~ .home-container {
+  margin-left: 60px; /* Compensar a largura da sidebar fechada */
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.card-body {
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.card-text {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.card-link {
+  font-size: 1rem;
+  color: #005699;
+  text-decoration: none;
+}
+
+.card-link:hover {
+  color: #004080;
+  text-decoration: underline;
+}

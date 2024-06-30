@@ -1,20 +1,21 @@
 // src/components/Navbar.js
 import React from 'react';
+import { Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import './navbar.css'; // Estilos para o componente Navbar
+import './navbar.css';
 
-const Navbar = () => {
-  return (
-    <nav className="navbar">
-      <ul>
-        <li><Link to="/cadastro-cidadao">Cadastro Cidadao</Link></li>
-        <li><Link to="/cadastro-acontecimento">Cadastro de Acontecimento</Link></li>
-        <li><Link to="/cadastro-usuario">Cadastro de Usuário</Link></li>
-        <li><Link to="/historico-atendimentos">Histórico</Link></li>
-        <li><Link to="/">Sair</Link></li>
-      </ul>
-    </nav>
-  );
-};
+const CustomNavbar = () => (
+  <Navbar style={{ backgroundColor: '#005699' }} variant="dark" expand="lg" className="fixed-top">
+    <Navbar.Brand as={Link} to="/home">
+      <img
+        src="/logoNavbar.png"
+        height="45"
+        width="45"
+        alt="Logo"
+      />
+    </Navbar.Brand>
+    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+  </Navbar>
+);
 
-export default Navbar;
+export default CustomNavbar;

@@ -1,0 +1,62 @@
+/* src/components/Sidebar.css */
+
+.sidebar {
+  height: calc(100vh - 65px); /* Ajustar para ficar abaixo da Navbar */
+  position: fixed;
+  top: 65px; /* Altura da Navbar */
+  left: 0;
+  width: 250px;
+  background-color: #f8f9fa;
+  padding-top: 20px;
+  border-right: 1px solid #dee2e6;
+  transition: width 0.3s;
+  z-index: 1000; /* Garantir que a sidebar esteja no topo */
+  overflow-y: auto; /* Adicionar scrollbar caso necessário */
+}
+
+.sidebar.closed {
+  width: 60px;
+}
+
+.toggle-btn {
+  position: absolute;
+  top: 20px; /* Ajuste conforme necessário */
+  right: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.sidebar .nav-link {
+  display: flex;
+  align-items: center;
+  color: #005699;
+}
+
+.sidebar .nav-link span {
+  margin-left: 10px;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background-color: #005699;
+  color: white;
+  border-radius: 4px;
+}
+
+.main-content {
+  display: flex;
+}
+
+.content {
+  margin-left: 250px; /* Compensar a largura da sidebar */
+  margin-top: 65px; /* Compensar a altura da Navbar */
+  transition: margin-left 0.3s;
+}
+
+.sidebar.closed ~ .content {
+  margin-left: 60px; /* Compensar a largura da sidebar fechada */
+}

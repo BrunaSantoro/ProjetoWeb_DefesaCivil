@@ -1,29 +1,14 @@
-/* src/components/navbar.css */
+/* src/components/home/Navbar.css */
 .navbar {
-    background-color: #005699;
-    color: white;
-    padding: 10px 0;
-  }
-  
-.navbar ul {
-list-style: none;
-padding: 0;
-margin: 0;
-display: flex;
-justify-content: center;
+  background-color: #005699;
+  color: white;
+  padding: 10px 20px;
+  height: 65px; /* Altura fixa para a navbar */
 }
 
-.navbar ul li {
-margin: 0 10px;
+.navbar-brand img {
+  height: 45px;
+  width: 45px; /* Espaço do canto esquerdo */
+  margin-left: 15px;
+  margin-bottom: 10px;
 }
-
-.navbar ul li a {
-color: white;
-text-decoration: none;
-padding: 10px 20px;
-display: block;
-}
-
-.navbar ul li a:hover {
-background-color: #0056b3;
-}  

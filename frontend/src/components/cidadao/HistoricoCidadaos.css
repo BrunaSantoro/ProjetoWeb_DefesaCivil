@@ -1,0 +1,71 @@
+/* src/components/cidadao/HistoricoCidadaos.css */
+
+/* Estilos gerais */
+.container {
+    margin-top: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #005699;
+  }
+  
+  /* Estilo para o formulário de busca */
+  form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  form .form-group {
+    flex: 1 1 200px;
+    min-width: 200px;
+  }
+  
+  /* Estilo para a tabela */
+  table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+  }
+  
+  table th {
+    background-color: #005699;
+    color: #ffffff;
+  }
+  
+  table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  table tr:hover {
+    background-color: #d1e7fd;
+  }
+  
+  /* Estilo para a paginação */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination .page-item .page-link {
+    color: #005699;
+  }
+  
+  .pagination .page-item.active .page-link {
+    background-color: #005699;
+    border-color: #005699;
+    color: #ffffff;
+  }  
