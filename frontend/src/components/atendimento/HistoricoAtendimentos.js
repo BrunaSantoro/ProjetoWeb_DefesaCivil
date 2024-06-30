@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../Navbar';
 import { fetchAtendimentos } from '../../services/atendimento/atendimentoService';
-import './historicoAtendimentos.css'; // Estilos para o componente HistoricoAtendimentos
+import './historicoAtendimentos.module.css'; // Estilos para o componente HistoricoAtendimentos
 import AtendimentoPopup from './AtendimentoPopup'; // Importa o componente de popup
 
 const HistoricoAtendimentos = () => {

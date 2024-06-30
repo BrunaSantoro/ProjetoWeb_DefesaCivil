@@ -11,18 +11,22 @@ import HistoricoCidadaos from './components/cidadao/HistoricoCidadaos';
 import Home from './components/home/Home';
 import Navbar from './components/Navbar';
 import Sidebar from './components/menu-lateral/Sidebar';
-import './App.css';
 
 const AppLayout = () => {
   const location = useLocation();
   const isLoginPage = location.pathname === '/';
 
+  if (!isLoginPage) {
+    import('./App.css');
+    import('./components/menu-lateral/sidebar.css');
+  }
+
   return (
     <>
       {!isLoginPage && <Navbar />}
-      <div className="main-content">
+      <div className={isLoginPage ? '' : 'main-content'}>
         {!isLoginPage && <Sidebar />}
-        <div className={`content ${isLoginPage ? 'full-width' : ''}`}>
+        <div className={isLoginPage ? '' : 'content'}>
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/home" element={<Home />} />

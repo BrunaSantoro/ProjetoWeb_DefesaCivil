@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Pagination, Form, Button, Container } from 'react-bootstrap';
 import { fetchCidadaos } from '../../services/cidadao/cidadaoService';
-import './HistoricoCidadaos.css';
+import './HistoricoCidadaos.module.css';
 
 const HistoricoCidadaos = () => {
   const [cidadaos, setCidadaos] = useState([]);

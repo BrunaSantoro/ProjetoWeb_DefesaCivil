@@ -1,4 +1,3 @@
-/* src/components/auth/Login.css */
 .left-side {
   background-color: #005699;
   color: white;
@@ -11,7 +10,7 @@
 }
 
 .logo {
-  width: 70%;
+  width: 50%;
   margin-bottom: 15px;
 }
 
@@ -24,19 +23,6 @@
 .logo-subtext {
   font-size: 1rem;
   margin: 0;
-}
-
-.custom-button {
-  background-color: #005699;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
-  border-radius: 5px;
-}
-
-.custom-button:hover {
-  background-color: #004080;
 }
 
 h2, p {
@@ -71,22 +57,4 @@ a {
   margin-top: 10px;
   color: #005699;
   text-decoration: none;
-}
-
-button[type="button"] {
-  width: 100%;
-  padding: 10px;
-  background-color: transparent; 
-  color: #007bff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-  font-size: 1rem;
-  text-align: center;
-}
-
-button[type="button"]:hover {
-  background-color: #e8f0fe;
-  text-decoration: underline; 
 }

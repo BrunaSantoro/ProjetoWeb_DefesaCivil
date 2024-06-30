@@ -1,56 +1,57 @@
-/* src/components/cidadao/cadastroCidadao.module.css */
-.containerCadastroCidadao {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-}
+.cadastro-cidadao {
+  .containerCadastroCidadao {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  }
 
-h1 {
-  color: #333;
-  text-align: center;
-  margin-bottom: 30px;
-}
+  h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+  }
 
-.formRow {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
+  .formRow {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
 
-.formGroup {
-  flex-basis: 48%;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-}
+  .formGroup {
+    flex-basis: 48%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
 
-.formRow label {
-  margin-bottom: 5px;
-}
+  .formRow label {
+    margin-bottom: 5px;
+  }
 
-.formRow input, .formRow select {
-  width: 95%;
-  padding: 10px;
-  border: 2px solid #ccc;
-  box-sizing: border-box;
-}
+  .formRow input, .formRow select {
+    width: 95%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    box-sizing: border-box;
+  }
 
-.formActions {
-  text-align: right;
-  padding-top: 20px;
-}
+  .formActions {
+    text-align: right;
+    padding-top: 20px;
+  }
 
-button {
-  padding: 10px 20px;
-  background-color: #005699;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
+  button {
+    padding: 10px 20px;
+    background-color: #005699;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 
-button:hover {
-  background-color: #0056b3;
+  button:hover {
+    background-color: #0056b3;
+  }
 }

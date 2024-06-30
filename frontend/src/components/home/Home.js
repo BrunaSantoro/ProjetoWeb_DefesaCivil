@@ -1,7 +1,7 @@
 // src/components/home/Home.js
 import React from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import './home.css';
+import './home.module.css';
 
 const Home = () => {
   return (

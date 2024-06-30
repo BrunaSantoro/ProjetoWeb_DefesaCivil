@@ -1,7 +1,8 @@
 /* src/components/cidadao/HistoricoCidadaos.css */
 
+.historico-cidadao {
 /* Estilos gerais */
-.container {
+  .container {
     margin-top: 20px;
   }
   
@@ -69,3 +70,4 @@
     border-color: #005699;
     color: #ffffff;
   }  
+}

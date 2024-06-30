@@ -1,8 +1,7 @@
-// src/components/auth/Login.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../../services/auth/loginService';
-import './Login.css'; // Importa o CSS específico para o componente Login
+import './Login.module.css';
 import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
 
 const Login = () => {
@@ -25,9 +24,9 @@ const Login = () => {
   return (
     <Container fluid className="vh-100 d-flex justify-content-center align-items-center p-0">
       <Row className="w-100 h-100">
-        <Col md={6} className="d-none d-md-flex justify-content-center align-items-center left-side">
+        <Col md={6}  style={{ backgroundColor: '#005699' }} className="d-none d-md-flex justify-content-center align-items-center left-side">
           <div className="text-center">
-            <img src="/logoDefesaCivilLogin.png" alt="Logo Defesa Civil" className="mb-4 logo" />
+            <img src="/logoDefesaCivilLogin.png" alt="Logo Defesa Civil" className="logo" />
           </div>
         </Col>
         <Col md={6} className="d-flex justify-content-center align-items-center right-side">
@@ -53,7 +52,7 @@ const Login = () => {
                   required
                 />
               </Form.Group>
-              <Button type="submit" className="w-100 mt-3 custom-button">
+              <Button style={{ backgroundColor: '#005699' , borderColor: '#005699'}} type="submit" className="w-100 mt-3 custom-button">
                 ENTRAR
               </Button>
             </Form>

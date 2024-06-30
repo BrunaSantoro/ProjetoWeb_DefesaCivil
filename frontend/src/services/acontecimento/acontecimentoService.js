@@ -17,3 +17,17 @@ export const fetchAcontecimentos = async (searchTerm, currentPage, limit = 10, s
     throw new Error('Erro ao buscar acontecimentos: ' + error.message);
   }
 };
+
+export const postAcontecimento = async (acontecimento) => {
+  try {
+    const response = await api.post('/acontecimentos', acontecimento, {
+      headers: {
+        "Accept": "application/json",
+        "content-type": "application/json",
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error('Erro ao criar acontecimento: ' + error.message);
+  }
+};

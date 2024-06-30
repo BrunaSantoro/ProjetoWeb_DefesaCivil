@@ -1,4 +1,3 @@
-// src/services/cidadao/cidadaoService.js
 import api from '../api';
 
 export const fetchCidadaos = async (query, dataInicio, dataFim) => {

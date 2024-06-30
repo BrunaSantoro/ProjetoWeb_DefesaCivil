@@ -1,6 +1,6 @@
 // src/components/atendimento/AtendimentoPopup.js
 import React from 'react';
-import './atendimentoPopup.css'; // Estilos para o componente AtendimentoPopup
+import './atendimentoPopup.module.css'; // Estilos para o componente AtendimentoPopup
 
 const AtendimentoPopup = ({ atendimento, onClose }) => {
   if (!atendimento) return null;
