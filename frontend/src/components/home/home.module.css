@@ -1,40 +1,22 @@
-/* src/components/home/Home.css */
-.home-container {
-  padding: 20px;
-  margin-left: 250px; /* Compensar a largura da sidebar */
-  transition: margin-left 0.3s;
+.home-boas-vindas {
+  width: 80%;
+  max-width: 100px; /* Ajuste conforme necessário */
 }
 
-.sidebar.closed ~ .home-container {
-  margin-left: 60px; /* Compensar a largura da sidebar fechada */
+.content-section {
+  margin-left: 40px; /* Aumenta o espaçamento entre a imagem e o texto */
 }
 
-.card {
-  border: 1px solid #ddd;
-  border-radius: 5px;
+h1 {
+  font-size: 30px; 
 }
 
-.card-body {
-  text-align: center;
-}
-
-.card-title {
-  font-size: 1.5rem;
+h2 {
+  font-size: 20px; /* Diminuir tamanho da fonte dos subtítulos */
   margin-bottom: 15px;
 }
 
-.card-text {
-  font-size: 1rem;
-  margin-bottom: 15px;
-}
-
-.card-link {
-  font-size: 1rem;
-  color: #005699;
-  text-decoration: none;
-}
-
-.card-link:hover {
-  color: #004080;
-  text-decoration: underline;
+p {
+  font-size: 15px; /* Diminuir tamanho da fonte do texto */
+  margin-bottom: 35px;
 }

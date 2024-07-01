@@ -1,54 +1,25 @@
-// src/components/home/Home.js
 import React from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import './home.module.css';
 
 const Home = () => {
   return (
     <Container fluid className="home-container">
-      <Row className="justify-content-center">
-        <Col md={10} className="text-center mt-4">
-          <h1 className="mb-4">Bem vido(a), usuario_teste</h1>
-          {/* <Row>
-            <Col md={3}>
-              <Card className="mb-4">
-                <Card.Body>
-                  <Card.Title>Acontecimentos</Card.Title>
-                  <Button variant="primary" href="/cadastro-acontecimento" className="w-100 mb-2">Cadastrar</Button>
-                  <Button variant="secondary" href="/historico-acontecimentos" className="w-100">Histórico</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={3}>
-              <Card className="mb-4">
-                <Card.Body>
-                  <Card.Title>Atendimentos</Card.Title>
-                  <Button variant="primary" href="/cadastro-atendimento" className="w-100 mb-2">Cadastrar</Button>
-                  <Button variant="warning" href="/pendentes-atendimentos" className="w-100 mb-2">Pendentes</Button>
-                  <Button variant="secondary" href="/historico-atendimentos" className="w-100">Histórico</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={3}>
-              <Card className="mb-4">
-                <Card.Body>
-                  <Card.Title>Cidadãos</Card.Title>
-                  <Button variant="primary" href="/cadastro-cidadao" className="w-100 mb-2">Cadastrar</Button>
-                  <Button variant="secondary" href="/historico-cidadaos" className="w-100">Histórico</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={3}>
-              <Card className="mb-4">
-                <Card.Body>
-                  <Card.Title>Relatórios</Card.Title>
-                  <Button variant="info" href="/relatorio-acontecimentos" className="w-100 mb-2">Relatório de Acontecimentos</Button>
-                  <Button variant="info" href="/relatorio-atendimentos" className="w-100 mb-2">Relatório de Atendimentos</Button>
-                  <Button variant="info" href="/relatorio-recibos" className="w-100">Recibo</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row> */}
+      <Row className="justify-content-center align-items-center">
+        <Col md={5} className="text-center mt-4">
+          <img src="/home-boas-vindas.png" alt="Boas-Vindas" className="home-boas-vindas" />
+        </Col>
+        <Col md={7} className="text-left mt-4 content-section">
+          <h1 className="mb-4">Mudar frase depois</h1>
+          <h2>Cadastro de Acontecimentos</h2>
+          <p>Vestibulum sit amet tortor libero lobortis semper at et odio. In eu tellus tellus. Pellentesque ullamcorper ultrices. Aenean facilisis vitae purus facilisis semper.</p>
+          <h2>Cadastro de Cidadãos</h2>
+          <p>Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+
+          <h2>Cadastro de Atendimentos</h2>
+          <p>Unc quis sem quis velit tincidunt congue a sit amet ante.</p>
+          <h2>Históricos</h2>
+          <p>In hac habitasse platea dictumst. In mi nulla, fringilla vestibulum finibus et.</p>
         </Col>
       </Row>
     </Container>
