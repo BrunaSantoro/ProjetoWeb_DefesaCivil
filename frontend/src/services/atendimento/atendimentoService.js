@@ -11,7 +11,8 @@ export const fetchAtendimentos = async (searchTerm, currentPage, limit = 10) => 
       },
     });
     return response.data;
+    
   } catch (error) {
     throw new Error('Erro ao buscar atendimentos: ' + error.message);
   }
-};
+}; 
