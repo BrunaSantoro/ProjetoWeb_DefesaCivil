@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../../services/auth/loginService';
+import { AuthContext } from '../../context/AuthContext';
 import styles from './Login.module.css';
 import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
 
@@ -9,11 +10,13 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await loginUser(email, password);
+      const data = await loginUser(email, password);
+      login(data.user);
       setMessage('Login bem-sucedido');
       navigate('/home'); // Redireciona para a tela de Home
     } catch (error) {
