@@ -1,13 +1,32 @@
-/* src/components/home/Navbar.css */
-.navbar {
+.custom-navbar {
+  background: linear-gradient(0deg, #1B7CB3 0%, #3797D5 55.25%, #4BA1DF 100%, #1B7CB3 100%);
   color: white;
-  padding: 10px 20px;
-  height: 65px; /* Altura fixa para a navbar */
+  height: 60px; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Centraliza os itens verticalmente */
 }
 
-.navbar-brand img {
-  height: 45px;
-  width: 45px; /* Espaço do canto esquerdo */
-  margin-left: 15px;
-  margin-bottom: 10px;
+.navbar-left, .navbar-right {
+  display: flex;
+  align-items: center; /* Centraliza os itens verticalmente */
+}
+
+.navbar-center {
+  flex-grow: 1; /* Permite que o centro ocupe o espaço restante */
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+}
+
+.navbar-icon {
+  color: white;
+  padding: 0 10px;
+  margin-top: 0; /* Remove a margem superior */
+}
+
+.navbar-logo {
+  display: block;
+  margin-top: 0;
+  padding: 0 0 7px;
 }
