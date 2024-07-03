@@ -55,19 +55,6 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             </Nav>
           )}
         </Nav.Item>
-        {/* <Nav.Item>
-          <Nav.Link as={Link} to="/relatorios" className={isActive('/relatorios') ? 'active' : ''}>
-            <FaFileAlt />
-            {isOpen && <span>Relatórios</span>}
-          </Nav.Link>
-          {isOpen && (
-            <Nav className="flex-column ml-3">
-              <Nav.Link as={Link} to="/relatorio-acontecimentos" className={isActive('/relatorio-acontecimentos') ? 'active' : ''}>Relatório de Acontecimentos</Nav.Link>
-              <Nav.Link as={Link} to="/relatorio-atendimentos" className={isActive('/relatorio-atendimentos') ? 'active' : ''}>Relatório de Atendimentos</Nav.Link>
-              <Nav.Link as={Link} to="/relatorio-recibos" className={isActive('/relatorio-recibos') ? 'active' : ''}>Recibo</Nav.Link>
-            </Nav>
-          )}
-        </Nav.Item> */}
       </Nav>
     </div>
   );
