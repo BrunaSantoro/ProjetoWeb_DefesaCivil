@@ -4,21 +4,13 @@ import { Link, useLocation } from 'react-router-dom';
 import { FaBars, FaTimes, FaHome, FaUser, FaClipboard, FaFileAlt } from 'react-icons/fa';
 import './sidebar.css';
 
-const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(true);
+const Sidebar = ({ isOpen, toggleSidebar }) => {
   const location = useLocation();
-
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
 
   const isActive = (path) => location.pathname === path;
 
   return (
     <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
-      <button className="toggle-btn" onClick={toggleSidebar}>
-        {isOpen ? <FaTimes /> : <FaBars />}
-      </button>
       <Nav className="flex-column">
         <Nav.Item>
           <Nav.Link as={Link} to="/home" className={isActive('/home') ? 'active' : ''}>
@@ -63,7 +55,7 @@ const Sidebar = () => {
             </Nav>
           )}
         </Nav.Item>
-        <Nav.Item>
+        {/* <Nav.Item>
           <Nav.Link as={Link} to="/relatorios" className={isActive('/relatorios') ? 'active' : ''}>
             <FaFileAlt />
             {isOpen && <span>Relatórios</span>}
@@ -75,7 +67,7 @@ const Sidebar = () => {
               <Nav.Link as={Link} to="/relatorio-recibos" className={isActive('/relatorio-recibos') ? 'active' : ''}>Recibo</Nav.Link>
             </Nav>
           )}
-        </Nav.Item>
+        </Nav.Item> */}
       </Nav>
     </div>
   );

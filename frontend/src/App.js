@@ -9,24 +9,27 @@ import HistoricoAtendimentos from './components/atendimento/HistoricoAtendimento
 import HistoricoAcontecimentos from './components/acontecimento/HistoricoAcontecimentos';
 import HistoricoCidadaos from './components/cidadao/HistoricoCidadaos';
 import Home from './components/home/Home';
-import Navbar from './components/Navbar';
+import CustomNavbar from './components/Navbar';
 import Sidebar from './components/menu-lateral/Sidebar';
 import PrivateRoute from './components/PrivateRoute';
+import './App.css';
+import './components/menu-lateral/sidebar.css';
 
 const AppLayout = () => {
   const location = useLocation();
   const isLoginPage = location.pathname === '/';
 
-  if (!isLoginPage) {
-    import('./App.css');
-    import('./components/menu-lateral/sidebar.css');
-  }
+  const [isSidebarOpen, setSidebarOpen] = React.useState(true);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
+  };
 
   return (
     <>
-      {!isLoginPage && <Navbar />}
+      {!isLoginPage && <CustomNavbar toggleSidebar={toggleSidebar} />}
       <div className={isLoginPage ? '' : 'main-content'}>
-        {!isLoginPage && <Sidebar />}
+        {!isLoginPage && <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />}
         <div className={isLoginPage ? '' : 'content'}>
           <Routes>
             <Route path="/" element={<Login />} />
