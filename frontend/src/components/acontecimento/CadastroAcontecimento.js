@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button, Col, Row, Container, Modal, Table, Toast, ToastContainer } from 'react-bootstrap';
 import './CadastroAcontecimento.module.css';
 import { postAcontecimento } from '../../services/acontecimento/acontecimentoService';
@@ -379,13 +379,13 @@ const CadastroAcontecimento = () => {
       'IR - SubTipo não Definido (COBRADE)': '2.3.1.2.0',
       'CE - SubTipo não Definido (COBRADE)': '2.4.1.0.0',
       'CB - SubTipo não Definido (COBRADE)': '2.4.2.0.0',
-      'TR - SubTipo não Definido (COBRADE)': '2.5.1.0.0',
-      'TF - SubTipo não Definido (COBRADE)': '2.5.2.0.0',
+      'TR - Tipo Não Definido (COBRADE)': '2.5.1.0.0',
+      'TF - Tipo Não Definido (COBRADE)': '2.5.2.0.0',
       'TA - SubTipo não Definido (COBRADE)': '2.5.3.0.0',
       'TM - SubTipo não Definido (COBRADE)': '2.5.4.0.0',
       'TQ - SubTipo não Definido (COBRADE)': '2.5.5.0.0',
-      'VS - SubTipo não Definido (COBRADE)': '0.0.0.0.0',
-      'VC - SubTipo não Definido (COBRADE)': '0.0.0.0.1'
+      'VS - Tipo Não Definido (COBRADE)': '0.0.0.0.0',
+      'VC - Tipo Não Definido (COBRADE)': '0.0.0.0.1'
     };
     return valoresAutomaticos[tipo] || '';
   };
@@ -393,9 +393,10 @@ const CadastroAcontecimento = () => {
   return (
     <Container className="bd m-0 border-0">
       <h3 className="my-3">Cadastro de Acontecimento</h3>
+      <hr className="mb-4" />
       <Form onSubmit={handleSubmit}>
-        <Row className="mb-3">
-          <Col md={6}>
+        <Row className="mb-4">
+          <Col md={12}>
             <Form.Group controlId="formClasse">
               <Form.Label>Classe</Form.Label>
               <Form.Control
@@ -411,6 +412,8 @@ const CadastroAcontecimento = () => {
               </Form.Control>
             </Form.Group>
           </Col>
+        </Row>
+        <Row className="mb-4">
           <Col md={6}>
             <Form.Group controlId="formGrupo">
               <Form.Label>Grupo</Form.Label>
@@ -430,8 +433,6 @@ const CadastroAcontecimento = () => {
               </Form.Control>
             </Form.Group>
           </Col>
-        </Row>
-        <Row className="mb-3">
           <Col md={6}>
             <Form.Group controlId="formSubgrupo">
               <Form.Label>Subgrupo</Form.Label>
@@ -451,6 +452,8 @@ const CadastroAcontecimento = () => {
               </Form.Control>
             </Form.Group>
           </Col>
+        </Row>
+        <Row className="mb-4">
           <Col md={6}>
             <Form.Group controlId="formTipo">
               <Form.Label>Tipo</Form.Label>
@@ -470,8 +473,6 @@ const CadastroAcontecimento = () => {
               </Form.Control>
             </Form.Group>
           </Col>
-        </Row>
-        <Row className="mb-3">
           <Col md={6}>
             <Form.Group controlId="formSubtipo">
               <Form.Label>Subtipo</Form.Label>
@@ -491,6 +492,8 @@ const CadastroAcontecimento = () => {
               </Form.Control>
             </Form.Group>
           </Col>
+        </Row>
+        <Row className="mb-4">
           <Col md={6}>
             <Form.Group controlId="formInfoCobrade">
               <Form.Label>Informação COBRADE</Form.Label>
@@ -504,8 +507,6 @@ const CadastroAcontecimento = () => {
               />
             </Form.Group>
           </Col>
-        </Row>
-        <Row className="mb-3">
           <Col md={6}>
             <Form.Group controlId="formDataHora">
               <Form.Label>Data e Hora</Form.Label>
@@ -521,63 +522,66 @@ const CadastroAcontecimento = () => {
               />
             </Form.Group>
           </Col>
+        </Row>
+        <Row className="mb-4">
           <Col md={6}>
-          <Form.Group controlId="formCidadaoResponsavel">
-            <Form.Label>Cidadão Responsável</Form.Label>
-            <div className="input-group">
-              <Form.Control
-                type="text"
-                name="cidadaoResponsavel"
-                value={selectedCidadao.nome}
-                style={{ backgroundColor: '#e9ecef' }}
-                className="form-control"
-                disabled
-              />
-              <div className="input-group-append">
-                <Button
-                  type="button"
-                  onClick={() => setShowModal(true)}
-                >
-                  Buscar
-                </Button>
+            <Form.Group controlId="formCidadaoResponsavel">
+              <Form.Label>Cidadão Responsável</Form.Label>
+              <div className="input-group">
+                <Form.Control
+                  type="text"
+                  name="cidadaoResponsavel"
+                  value={selectedCidadao.nome}
+                  style={{ backgroundColor: '#e9ecef' }}
+                  className="form-control"
+                  disabled
+                />
+                <div className="input-group-append">
+                  <Button
+                    type="button"
+                    onClick={() => setShowModal(true)}
+                    style={{ backgroundColor: '#78A6C7', borderTopLeftRadius: '0', borderBottomLeftRadius: '0' }}
+                  >
+                    Buscar
+                  </Button>
+                </div>
               </div>
-            </div>
-          </Form.Group>
+            </Form.Group>
+          </Col>
+          <Col md={6}>
+            <Form.Group controlId="formCep">
+              <Form.Label>CEP</Form.Label>
+              <div style={{ position: 'relative' }}>
+                <Form.Control
+                  type="text"
+                  name="cep"
+                  value={formData.cep}
+                  onChange={handleCepChange}
+                  maxLength={8}
+                  style={{ paddingRight: '40px' }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '50%',
+                    right: '10px',
+                    transform: 'translateY(-50%)',
+                    fontSize: '0.85em',
+                    color: '#6c757d'
+                  }}
+                >
+                  {cepLength}/8
+                </div>
+              </div>
+              {cepNotFound && (
+                <div style={{ color: 'red', marginTop: '5px' }}>
+                  CEP não encontrado.
+                </div>
+              )}
+            </Form.Group>
           </Col>
         </Row>
-        <Row className="mb-3">
-        <Col md={6}>
-          <Form.Group controlId="formCep">
-            <Form.Label>CEP</Form.Label>
-            <div style={{ position: 'relative' }}>
-              <Form.Control
-                type="text"
-                name="cep"
-                value={formData.cep}
-                onChange={handleCepChange}
-                maxLength={8}
-                style={{ paddingRight: '40px' }}
-              />
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '50%',
-                  right: '10px',
-                  transform: 'translateY(-50%)',
-                  fontSize: '0.85em',
-                  color: '#6c757d'
-                }}
-              >
-                {cepLength}/8
-              </div>
-            </div>
-            {cepNotFound && (
-              <div style={{ color: 'red', marginTop: '5px' }}>
-                CEP não encontrado.
-              </div>
-            )}
-          </Form.Group>
-        </Col>
+        <Row className="mb-4">
           <Col md={6}>
             <Form.Group controlId="formRua">
               <Form.Label>Rua</Form.Label>
@@ -589,8 +593,6 @@ const CadastroAcontecimento = () => {
               />
             </Form.Group>
           </Col>
-        </Row>
-        <Row className="mb-3">
           <Col md={6}>
             <Form.Group controlId="formBairro">
               <Form.Label>Bairro</Form.Label>
@@ -602,6 +604,8 @@ const CadastroAcontecimento = () => {
               />
             </Form.Group>
           </Col>
+        </Row>
+        <Row className="mb-4">
           <Col md={6}>
             <Form.Group controlId="formCidade">
               <Form.Label>Cidade</Form.Label>
@@ -613,8 +617,6 @@ const CadastroAcontecimento = () => {
               />
             </Form.Group>
           </Col>
-        </Row>
-        <Row className="mb-3">
           <Col md={6}>
             <Form.Group controlId="formEstado">
               <Form.Label>Estado</Form.Label>
@@ -632,25 +634,36 @@ const CadastroAcontecimento = () => {
           </Col>
           <Col md={6}>
             <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-              <Button type="button" variant="secondary" onClick={() => setFormData({
-                classe: '',
-                grupo: '',
-                subgrupo: '',
-                tipo: '',
-                subtipo: '',
-                infoCobrade: '',
-                dataHora: '',
-                numeroProtocolo: '',
-                cidadaoResponsavel: '',
-                cep: '',
-                rua: '',
-                bairro: '',
-                cidade: '',
-                estado: ''
-              })}>
+              <Button
+                type="button"
+                variant="secondary"
+                onClick={() => setFormData({
+                  classe: '',
+                  grupo: '',
+                  subgrupo: '',
+                  tipo: '',
+                  subtipo: '',
+                  infoCobrade: '',
+                  dataHora: '',
+                  numeroProtocolo: '',
+                  cidadaoResponsavel: '',
+                  cep: '',
+                  rua: '',
+                  bairro: '',
+                  cidade: '',
+                  estado: ''
+                })}
+                style={{ backgroundColor: '#BAB4B4', borderColor: '#BAB4B4' }}
+              >
                 Cancelar
               </Button>
-              <Button variant="primary" type="submit">Salvar</Button>
+              <Button
+                variant="primary"
+                type="submit"
+                style={{ backgroundColor: '#2987C0', borderColor: '#2987C0' }}
+              >
+                Salvar
+              </Button>
             </div>
           </Col>
         </Row>
@@ -671,13 +684,13 @@ const CadastroAcontecimento = () => {
         </Modal.Header>
         <Modal.Body>
           <div className="input-group">
-              <Form.Control
-                type="text"
-                placeholder="Nome ou CPF do cidadão..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="form-control"
-              />
+            <Form.Control
+              type="text"
+              placeholder="Nome ou CPF do cidadão..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="form-control"
+            />
             <div className="input-group-append">
               <Button variant="primary" onClick={handleSearch}>
                 Pesquisar
