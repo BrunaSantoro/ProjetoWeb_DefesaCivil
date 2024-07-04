@@ -1,7 +1,7 @@
 import React from 'react';
 import { Nav } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
-import { FaHome, FaUser, FaClipboard } from 'react-icons/fa';
+import { FaHome, FaUser, FaCloudRain, FaHeadset } from 'react-icons/fa'; // Importando FaHeadset
 import './sidebar.css';
 
 const Sidebar = ({ isOpen }) => {
@@ -20,7 +20,7 @@ const Sidebar = ({ isOpen }) => {
         </Nav.Item>
         <Nav.Item>
           <Nav.Link as={Link} to="/cadastro-acontecimento" className={isActive('/cadastro-acontecimento') ? 'active' : ''}>
-            <FaClipboard className="icon" />
+            <FaCloudRain className="icon" /> {/* Ícone de nuvem */}
             {isOpen && <span className="text special-text">Acontecimentos</span>}
           </Nav.Link>
           {isOpen && (
@@ -32,7 +32,7 @@ const Sidebar = ({ isOpen }) => {
         </Nav.Item>
         <Nav.Item>
           <Nav.Link as={Link} to="/cadastro-atendimento" className={isActive('/cadastro-atendimento') ? 'active' : ''}>
-            <FaClipboard className="icon" />
+            <FaHeadset className="icon" /> {/* Ícone de suporte/atendimento ao cliente */}
             {isOpen && <span className="text special-text">Atendimentos</span>}
           </Nav.Link>
           {isOpen && (

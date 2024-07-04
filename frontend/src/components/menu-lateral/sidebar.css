@@ -1,10 +1,10 @@
 :root {
     --body-color: #E4E9F7;
     --sidebar-color: #FFF;
-    --primary-color: #BBD8F0; /* Cor da seleção atualizada */
+    --primary-color: #BBD8F0; 
     --primary-color-light: #F6F5FF;
     --toggle-color: #DDD;
-    --icon-color: #479cd4;
+    --icon-color: #95BFE1;
     --text-color: #696262;
     --special-text-color: #252525;
     --tran-03: all 0.3s ease;
@@ -19,7 +19,7 @@ body {
 }
 
 ::selection {
-    background-color: var(--primary-color);
+    background-color: #BBD8F0;
     color: #fff;
 }
 
@@ -48,16 +48,16 @@ body {
     align-items: center;
     margin-top: 10px;
     justify-content: center;
+    
 }
 
 .sidebar .icon {
-    min-width: 25px;
     border-radius: 5px;
-    height: 40px;
+    height: 25px; /* Tamanho icone */
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 35px;
     color: var(--icon-color);
 }
 
@@ -76,6 +76,7 @@ body {
 .sidebar .nav-link:hover .special-text,
 .sidebar .nav-link.active .special-text {
     color: white;
+    
 }
 
 .sidebar.close .text {
@@ -88,12 +89,12 @@ body {
     color: var(--text-color);
     width: 100%;
     justify-content: flex-start;
-    padding: 10px 25px;
+    padding: 10px 40px; /* Espaçamento da seleção */
 }
 
 .sidebar .nav-link:hover,
 .sidebar .nav-link.active {
-    background-color: #BBD8F0; /* Cor da seleção atualizada */
+    background-color: #BBD8F0; 
     color: white;
     border-radius: 5px;
 }

@@ -25,7 +25,7 @@
   left: 0;
   width: 250px;
   background-color: #f8f9fa;
-  padding-top: 20px;
+  padding-top: 8px;
   border-right: 1px solid #dee2e6;
   transition: width 0.3s;
   z-index: 1000; /* Garantir que a sidebar esteja no topo */
@@ -40,10 +40,10 @@
   position: absolute;
   top: 20px; /* Ajuste conforme necessário */
   right: 12px;
-  background-color: #007bff;
+  background-color: #479cd4;
   color: white;
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
   padding: 5px 10px;
   cursor: pointer;
 }
@@ -60,11 +60,11 @@
 
 .sidebar .nav-link:hover,
 .sidebar .nav-link.active {
-  background-color: #005699;
+  background-color: #BBD8F0;
   color: white;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 .sidebar.closed ~ .content {
-  margin-left: 60px; /* Compensar a largura da sidebar fechada */
+  margin-left: 70px; /* Compensar a largura da sidebar fechada */
 }
