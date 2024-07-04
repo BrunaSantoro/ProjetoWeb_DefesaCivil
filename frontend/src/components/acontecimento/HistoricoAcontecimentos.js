@@ -83,46 +83,47 @@ const HistoricoAcontecimentos = () => {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>Classe</th>
-            <th>Grupo</th>
-            <th>Subgrupo</th>
-            <th>Tipo</th>
-            <th>Subtipo</th>
-            <th>Info Cobrade</th>
-            <th>Numero Protocolo</th>
-            <th>Data Hora</th>
-            <th>Cidadão Responsável</th>
-            <th>Endereço</th>
+            <th className="text-center">Classe</th>
+            <th className="text-center">Grupo</th>
+            <th className="text-center">Subgrupo</th>
+            <th className="text-center">Tipo</th>
+            <th className="text-center">Subtipo</th>
+            <th className="text-center">Info Cobrade</th>
+            <th className="text-center">Numero Protocolo</th>
+            <th className="text-center">Data Hora</th>
+            <th className="text-center">Cidadão Responsável</th>
+            <th className="text-center">Endereço</th>
           </tr>
         </thead>
         <tbody>
           {acontecimentos.map((acontecimento) => (
             <tr key={acontecimento._id}>
-              <td>{acontecimento.classe}</td>
-              <td>{acontecimento.grupo}</td>
-              <td>{acontecimento.subgrupo}</td>
-              <td>{acontecimento.tipo}</td>
-              <td>{acontecimento.subtipo}</td>
-              <td>{acontecimento.infoCobrade}</td>
-              <td>{acontecimento.numeroProtocolo}</td>
-              <td>{new Date(acontecimento.dataHora).toLocaleString()}</td>
-              <td>{acontecimento.cidadaoResponsavel}</td>
-              <td>{`${acontecimento.rua}, ${acontecimento.bairro}, ${acontecimento.cidade}, ${acontecimento.estado}`}</td>
+              <td className="text-center">{acontecimento.classe}</td>
+              <td className="text-center">{acontecimento.grupo}</td>
+              <td className="text-center">{acontecimento.subgrupo}</td>
+              <td className="text-center">{acontecimento.tipo}</td>
+              <td className="text-center">{acontecimento.subtipo}</td>
+              <td className="text-center">{acontecimento.infoCobrade}</td>
+              <td className="text-center">{acontecimento.numeroProtocolo}</td>
+              <td className="text-center">{new Date(acontecimento.dataHora).toLocaleString()}</td>
+              <td className="text-center">{acontecimento.cidadaoResponsavel}</td>
+              <td className="text-center">{`${acontecimento.rua}, ${acontecimento.bairro}, ${acontecimento.cidade}, ${acontecimento.estado}`}</td>
             </tr>
           ))}
         </tbody>
       </Table>
-      <Pagination>
+      <Pagination className="justify-content-start">
+        <Pagination.Prev onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1} />
         {Array.from({ length: totalPages }, (_, index) => (
           <Pagination.Item
             key={index + 1}
             active={index + 1 === currentPage}
             onClick={() => handlePageChange(index + 1)}
-            style={{ backgroundColor: '#2987C0', borderColor: '#2987C0' }}
           >
             {index + 1}
           </Pagination.Item>
         ))}
+        <Pagination.Next onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages} />
       </Pagination>
     </Container>
   );
