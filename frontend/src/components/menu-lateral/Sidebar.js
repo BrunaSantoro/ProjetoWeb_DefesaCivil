@@ -1,27 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Nav } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
-import { FaBars, FaTimes, FaHome, FaUser, FaClipboard, FaFileAlt } from 'react-icons/fa';
+import { FaHome, FaUser, FaClipboard } from 'react-icons/fa';
 import './sidebar.css';
 
-const Sidebar = ({ isOpen, toggleSidebar }) => {
+const Sidebar = ({ isOpen }) => {
   const location = useLocation();
 
   const isActive = (path) => location.pathname === path;
 
   return (
     <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
-      <Nav className="flex-column">
+      <Nav className="flex-column menu">
         <Nav.Item>
           <Nav.Link as={Link} to="/home" className={isActive('/home') ? 'active' : ''}>
-            <FaHome />
-            {isOpen && <span>Home</span>}
+            <FaHome className="icon" />
+            {isOpen && <span className="text special-text">Início</span>}
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link as={Link} to="/cadastro-acontecimento" className={isActive('/cadastro-acontecimento') ? 'active' : ''}>
-            <FaClipboard />
-            {isOpen && <span>Acontecimentos</span>}
+            <FaClipboard className="icon" />
+            {isOpen && <span className="text special-text">Acontecimentos</span>}
           </Nav.Link>
           {isOpen && (
             <Nav className="flex-column ml-3">
@@ -32,21 +32,19 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         </Nav.Item>
         <Nav.Item>
           <Nav.Link as={Link} to="/cadastro-atendimento" className={isActive('/cadastro-atendimento') ? 'active' : ''}>
-            <FaClipboard />
-            {isOpen && <span>Atendimentos</span>}
+            <FaClipboard className="icon" />
+            {isOpen && <span className="text special-text">Atendimentos</span>}
           </Nav.Link>
           {isOpen && (
             <Nav className="flex-column ml-3">
-              <Nav.Link as={Link} to="/cadastro-atendimento" className={isActive('/cadastro-atendimento') ? 'active' : ''}>Cadastro</Nav.Link>
-              <Nav.Link as={Link} to="/pendentes-atendimentos" className={isActive('/pendentes-atendimentos') ? 'active' : ''}>Pendentes</Nav.Link>
               <Nav.Link as={Link} to="/historico-atendimentos" className={isActive('/historico-atendimentos') ? 'active' : ''}>Histórico</Nav.Link>
             </Nav>
           )}
         </Nav.Item>
         <Nav.Item>
           <Nav.Link as={Link} to="/cadastro-cidadao" className={isActive('/cadastro-cidadao') ? 'active' : ''}>
-            <FaUser />
-            {isOpen && <span>Cidadãos</span>}
+            <FaUser className="icon" />
+            {isOpen && <span className="text special-text">Cidadãos</span>}
           </Nav.Link>
           {isOpen && (
             <Nav className="flex-column ml-3">
