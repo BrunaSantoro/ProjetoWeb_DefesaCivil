@@ -1,6 +1,5 @@
-// src/components/acontecimento/HistoricoAcontecimentos.js
 import React, { useState, useEffect } from 'react';
-import { Table, Pagination, Form, Button, Container } from 'react-bootstrap';
+import { Table, Pagination, Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { fetchAcontecimentos } from '../../services/acontecimento/acontecimentoService';
 import './HistoricoAcontecimentos.module.css';
 
@@ -38,36 +37,48 @@ const HistoricoAcontecimentos = () => {
 
   return (
     <Container>
-      <h1>Histórico de Acontecimentos</h1>
+      <h3 className="my-3 text-left">Histórico de Acontecimentos</h3>
+      <hr className="mb-4" />
+      <h5>Filtros</h5>
       <Form onSubmit={handleSearch} className="mb-4">
-        <Form.Group controlId="formSearchTerm">
-          <Form.Label>Buscar</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Termo de busca"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group controlId="formStartDate">
-          <Form.Label>Data de Início</Form.Label>
-          <Form.Control
-            type="date"
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group controlId="formEndDate">
-          <Form.Label>Data de Fim</Form.Label>
-          <Form.Control
-            type="date"
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
-          />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Buscar
-        </Button>
+        <Row>
+          <Col md={3}>
+            <Form.Group controlId="formSearchTerm">
+              <Form.Label>Buscar</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Termo de busca"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </Form.Group>
+          </Col>
+          <Col md={3}>
+            <Form.Group controlId="formStartDate">
+              <Form.Label>Data de Início</Form.Label>
+              <Form.Control
+                type="date"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+              />
+            </Form.Group>
+          </Col>
+          <Col md={3}>
+            <Form.Group controlId="formEndDate">
+              <Form.Label>Data de Fim</Form.Label>
+              <Form.Control
+                type="date"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+              />
+            </Form.Group>
+          </Col>
+          <Col md={3} className="d-flex align-items-end">
+            <Button variant="primary" type="submit" style={{ backgroundColor: '#2987C0', borderColor: '#2987C0' }}>
+              Filtrar
+            </Button>
+          </Col>
+        </Row>
       </Form>
       <Table striped bordered hover>
         <thead>
@@ -107,6 +118,7 @@ const HistoricoAcontecimentos = () => {
             key={index + 1}
             active={index + 1 === currentPage}
             onClick={() => handlePageChange(index + 1)}
+            style={{ backgroundColor: '#2987C0', borderColor: '#2987C0' }}
           >
             {index + 1}
           </Pagination.Item>
