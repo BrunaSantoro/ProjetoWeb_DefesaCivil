@@ -1,15 +1,15 @@
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
-import './navbar.css';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { logoutUser } from '../services/auth/loginService';
+import './navbar.css';
 
 const CustomNavbar = ({ toggleSidebar }) => {
-  const navigate = useNavigate();
-
   const handleLogout = () => {
-    navigate('/'); // Redireciona para a tela de login
+    logoutUser();
+    window.location.href = '/';
   };
 
   return (

@@ -10,7 +10,11 @@ export const refreshToken = async () => {
   const response = await api.post('/auth/refresh-token', { refreshToken });
   const { accessToken } = response.data;
 
-  localStorage.setItem('accessToken', accessToken);
+  const formattedAccessToken = accessToken.startsWith('Bearer ')
+    ? accessToken
+    : `Bearer ${accessToken}`;
 
-  return accessToken;
+  localStorage.setItem('accessToken', formattedAccessToken);
+
+  return formattedAccessToken;
 };

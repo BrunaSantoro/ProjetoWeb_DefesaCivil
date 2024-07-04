@@ -18,7 +18,7 @@ const Login = () => {
       const data = await loginUser(email, password);
       login(data.user);
       setMessage('Login bem-sucedido');
-      navigate('/home'); // Redireciona para a tela de Home
+      navigate('/home');
     } catch (error) {
       setMessage(error.response?.data?.message || 'Erro no login');
     }
