@@ -1,7 +1,7 @@
 .custom-navbar {
   background: linear-gradient(0deg, #1B7CB3 0%, #3797D5 55.25%, #4BA1DF 100%, #1B7CB3 100%);
   color: white;
-  height: 60px; 
+  height: 70px; 
   display: flex;
   justify-content: space-between;
   align-items: center; /* Centraliza os itens verticalmente */
@@ -28,5 +28,5 @@
 .navbar-logo {
   display: block;
   margin-top: 0;
-  padding: 0 0 7px;
+  padding: 0 0 6px;
 }
