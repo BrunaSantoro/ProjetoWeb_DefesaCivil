@@ -20,7 +20,7 @@
   }
 
   .formGroup {
-    flex-basis: 48%;
+    flex-basis: 100%;
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
@@ -54,4 +54,53 @@
   button:hover {
     background-color: #0056b3;
   }
+}
+
+/* Adicionando estilos para o layout semelhante ao CadastroAcontecimento */
+
+.bd {
+  background-color: #FFF; /* Ajuste a cor de fundo do container de conteúdo se necessário */
+}
+
+h3 {
+  margin-bottom: 20px;
+}
+
+hr {
+  margin-top: 30px;
+  border: 1px solid #c0c0c0; /* Linha de divisão */
+  margin-bottom: 30px;
+}
+
+.input-group .input-group-append .btn {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.input-group .form-control {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.input-group .btn {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.mt-4 .btn-secondary {
+  background-color: #BAB4B4;
+  border-color: #BAB4B4;
+}
+
+.mt-4 .btn-primary {
+  background-color: #2987C0;
+  border-color: #2987C0;
+}
+
+.container {
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

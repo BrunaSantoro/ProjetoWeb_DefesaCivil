@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import { Form, Button, Col, Row, Container } from 'react-bootstrap';
 import Navbar from '../Navbar';
 import styles from './cadastroCidadao.module.css'; // Estilos para o componente CadastroCidadao
-
-import { postCidadao } from '../../services/cidadao/cidadaoService'; 
+import { postCidadao } from '../../services/cidadao/cidadaoService';
 import { fetchCep } from '../../services/endereco/cepService';
 
 const CadastroCidadao = () => {
@@ -19,8 +19,7 @@ const CadastroCidadao = () => {
   const [estado, setEstado] = useState('');
   const [telefone, setTelefone] = useState('');
 
-  //para o cep automático
-  const [address, setAddress] = useState(null);
+  // Para o CEP automático
   const [cepLength, setCepLength] = useState(0);
   const [cepNotFound, setCepNotFound] = useState(false);
 
@@ -38,7 +37,7 @@ const CadastroCidadao = () => {
       numPessoasNaCasa: parseInt(numPessoasNaCasa),
       bairro: bairro,
       rua: rua,
-      cidade:cidade,
+      cidade: cidade,
       estado: estado,
       telefone: telefone,
     };
@@ -67,8 +66,6 @@ const CadastroCidadao = () => {
       alert('Erro ao cadastrar cidadão: ' + error.message);
     }
   };
-
-
 
   const handleCepChange = async (e) => {
     const { value } = e.target;
@@ -109,148 +106,200 @@ const CadastroCidadao = () => {
   return (
     <div>
       <Navbar />
-      <div className={styles.containerCadastroCidadao}>
-        <h1>Cadastro de Cidadão</h1>
-        <form id="cadastroForm" onSubmit={handleCadastro}>
-          <div className={styles.formRow}>
-            <div className={styles.formGroup}>
-              <label htmlFor="nome">Nome completo:</label>
-              <input
-                id="nome"
-                type="text"
-                placeholder="Digite aqui"
-                value={nome}
-                onChange={(e) => setNome(e.target.value)}
-                required
-              />
-            </div>
-            <div className={styles.formGroup}>
-              <label htmlFor="cpf">Cadastro de Pessoa Física (CPF):</label>
-              <input
-                id="cpf"
-                type="text"
-                placeholder="Digite aqui"
-                value={cpf}
-                onChange={(e) => setCpf(e.target.value)}
-                required
-              />
-            </div>
-          </div>
-          <div className={styles.formRow}>
-            <div className={styles.formGroup}>
-              <label htmlFor="rg">Registro Geral (RG):</label>
-              <input
-                id="rg"
-                type="text"
-                placeholder="Digite aqui"
-                value={rg}
-                onChange={(e) => setRg(e.target.value)}
-                required
-              />
-            </div>
-            <div className={styles.formGroup}>
-              <label htmlFor="cep">CEP:</label>
-              <input
-                id="cep"
-                type="text"
-                placeholder="Digite aqui"
-                value={cep}
-                onChange={handleCepChange}
-                required
-              />
-            </div>
-          </div>
-          <div className={styles.formRow}>
-            <div className={styles.formGroup}>
-              <label htmlFor="bairro">Bairro:</label>
-              <input
-                id="bairro"
-                type="text"
-                placeholder="Digite aqui"
-                value={bairro}
-                onChange={(e) => setBairro(e.target.value)}
-                required
-              />
-            </div>
-            <div className={styles.formGroup}>
-              <label htmlFor="rua">Rua:</label>
-              <input
-                id="rua"
-                type="text"
-                placeholder="Digite aqui"
-                value={rua}
-                onChange={(e) => setRua(e.target.value)}
-                required
-              />
-            </div>
-          </div>
-          <div className={styles.formRow}>
-            <div className={styles.formGroup}>
-              <label htmlFor="cidade">Cidade:</label>
-              <input
-                id="cidade"
-                type="text"
-                placeholder="Digite aqui"
-                value={cidade}
-                onChange={(e) => setCidade(e.target.value)}
-                required
-              />
-            </div>
-            <div className={styles.formGroup}>
-              <label htmlFor="estado">Estado:</label>
-              <input
-                id="estado"
-                type="text"
-                placeholder="Digite aqui"
-                value={estado}
-                onChange={(e) => setEstado(e.target.value)}
-                required
-              />
-            </div>
-            <div className={styles.formRow}>
-            <div className={styles.formGroup}>
-              <label htmlFor="numeroCasa">Número da residência:</label>
-              <input
-                id="numeroCasa"
-                type="text"
-                placeholder="Digite aqui"
-                value={numeroCasa}
-                onChange={(e) => setNumeroCasa(e.target.value)}
-                required
-              />
-            </div>
-            <div className={styles.formGroup}>
-              <label htmlFor="numPessoasNaCasa">Número de pessoas na casa:</label>
-              <input
-                id="numPessoasNaCasa"
-                type="text"
-                placeholder="Digite aqui"
-                value={numPessoasNaCasa}
-                onChange={(e) => setNumPessoasNaCasa(e.target.value)}
-                required
-              />
-            </div>
-          </div> 
-          </div>
-          <div className={styles.formRow}>
-            <div className={styles.formGroup}>
-              <label htmlFor="telefone">Número de telefone:</label>
-              <input
-                id="telefone"
-                type="text"
-                placeholder="Digite aqui"
-                value={telefone}
-                onChange={(e) => setTelefone(e.target.value)}
-                required
-              />
-            </div>
-          </div>
-          <div className={styles.formActions}>
-            <button type="button" onClick={cancelar}>Cancelar</button>
-            <button type="submit">Salvar</button>
-          </div>
-        </form>
-      </div>
+      <Container className="bd m-0 border-0">
+        <h3 className="my-3">Cadastro de Cidadão</h3>
+        <hr className="mb-4" />
+        <Form id="cadastroForm" onSubmit={handleCadastro}>
+          <Row className="mb-4">
+            <Col md={12}>
+              <Form.Group controlId="formNome">
+                <Form.Label>Nome completo</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Digite aqui"
+                  value={nome}
+                  onChange={(e) => setNome(e.target.value)}
+                  required
+                />
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row className="mb-4">
+            <Col md={6}>
+              <Form.Group controlId="formCpf">
+                <Form.Label>Cadastro de Pessoa Física (CPF)</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Digite aqui"
+                  value={cpf}
+                  onChange={(e) => setCpf(e.target.value)}
+                  required
+                />
+              </Form.Group>
+            </Col>
+            <Col md={6}>
+              <Form.Group controlId="formRg">
+                <Form.Label>Registro Geral (RG)</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Digite aqui"
+                  value={rg}
+                  onChange={(e) => setRg(e.target.value)}
+                  required
+                />
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row className="mb-4">
+            <Col md={6}>
+              <Form.Group controlId="formCep">
+                <Form.Label>CEP</Form.Label>
+                <div style={{ position: 'relative' }}>
+                  <Form.Control
+                    type="text"
+                    placeholder="Digite aqui"
+                    value={cep}
+                    onChange={handleCepChange}
+                    maxLength={8}
+                    required
+                    style={{ paddingRight: '40px' }}
+                  />
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '50%',
+                      right: '10px',
+                      transform: 'translateY(-50%)',
+                      fontSize: '0.85em',
+                      color: '#6c757d'
+                    }}
+                  >
+                    {cepLength}/8
+                  </div>
+                </div>
+                {cepNotFound && (
+                  <div style={{ color: 'red', marginTop: '5px' }}>
+                    CEP não encontrado.
+                  </div>
+                )}
+              </Form.Group>
+            </Col>
+            <Col md={6}>
+              <Form.Group controlId="formNumeroCasa">
+                <Form.Label>Número da residência</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Digite aqui"
+                  value={numeroCasa}
+                  onChange={(e) => setNumeroCasa(e.target.value)}
+                  required
+                />
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row className="mb-4">
+            <Col md={6}>
+              <Form.Group controlId="formBairro">
+                <Form.Label>Bairro</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Digite aqui"
+                  value={bairro}
+                  onChange={(e) => setBairro(e.target.value)}
+                  required
+                />
+              </Form.Group>
+            </Col>
+            <Col md={6}>
+              <Form.Group controlId="formRua">
+                <Form.Label>Rua</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Digite aqui"
+                  value={rua}
+                  onChange={(e) => setRua(e.target.value)}
+                  required
+                />
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row className="mb-4">
+            <Col md={6}>
+              <Form.Group controlId="formCidade">
+                <Form.Label>Cidade</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Digite aqui"
+                  value={cidade}
+                  onChange={(e) => setCidade(e.target.value)}
+                  required
+                />
+              </Form.Group>
+            </Col>
+            <Col md={6}>
+              <Form.Group controlId="formEstado">
+                <Form.Label>Estado</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Digite aqui"
+                  value={estado}
+                  onChange={(e) => setEstado(e.target.value)}
+                  required
+                />
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row className="mb-4">
+            <Col md={6}>
+              <Form.Group controlId="formNumPessoasNaCasa">
+                <Form.Label>Número de pessoas na residência</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Digite aqui"
+                  value={numPessoasNaCasa}
+                  onChange={(e) => setNumPessoasNaCasa(e.target.value)}
+                  required
+                />
+              </Form.Group>
+            </Col>
+            <Col md={6}>
+              <Form.Group controlId="formTelefone">
+                <Form.Label>Número de telefone</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Digite aqui"
+                  value={telefone}
+                  onChange={(e) => setTelefone(e.target.value)}
+                  required
+                />
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row className="mt-4">
+            <Col md={6}>
+            </Col>
+            <Col md={6}>
+              <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+                <Button
+                  type="button"
+                  variant="secondary"
+                  onClick={cancelar}
+                  style={{ backgroundColor: '#BAB4B4', borderColor: '#BAB4B4' }}
+                >
+                  Cancelar
+                </Button>
+                <Button
+                  variant="primary"
+                  type="submit"
+                  style={{ backgroundColor: '#2987C0', borderColor: '#2987C0' }}
+                >
+                  Salvar
+                </Button>
+              </div>
+            </Col>
+          </Row>
+        </Form>
+      </Container>
     </div>
   );
 };

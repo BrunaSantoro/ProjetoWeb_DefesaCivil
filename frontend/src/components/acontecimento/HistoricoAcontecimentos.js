@@ -83,26 +83,26 @@ const HistoricoAcontecimentos = () => {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th className="text-center">Classe</th>
-            <th className="text-center">Grupo</th>
+            {/* <th className="text-center">Classe</th> */}
+            {/* <th className="text-center">Grupo</th> */}
             <th className="text-center">Subgrupo</th>
             <th className="text-center">Tipo</th>
-            <th className="text-center">Subtipo</th>
-            <th className="text-center">Info Cobrade</th>
-            <th className="text-center">Numero Protocolo</th>
-            <th className="text-center">Data Hora</th>
-            <th className="text-center">Cidadão Responsável</th>
+            {/* <th className="text-center">Subtipo</th> */}
+            <th className="text-center">Cobrade</th>
+            <th className="text-center">Número Protocolo</th>
+            <th className="text-center">Data e Hora</th>
+            <th className="text-center">Cidadão</th>
             <th className="text-center">Endereço</th>
           </tr>
         </thead>
         <tbody>
           {acontecimentos.map((acontecimento) => (
             <tr key={acontecimento._id}>
-              <td className="text-center">{acontecimento.classe}</td>
-              <td className="text-center">{acontecimento.grupo}</td>
+              {/* <td className="text-center">{acontecimento.classe}</td> */}
+              {/* <td className="text-center">{acontecimento.grupo}</td> */}
               <td className="text-center">{acontecimento.subgrupo}</td>
               <td className="text-center">{acontecimento.tipo}</td>
-              <td className="text-center">{acontecimento.subtipo}</td>
+              {/* <td className="text-center">{acontecimento.subtipo}</td> */}
               <td className="text-center">{acontecimento.infoCobrade}</td>
               <td className="text-center">{acontecimento.numeroProtocolo}</td>
               <td className="text-center">{new Date(acontecimento.dataHora).toLocaleString()}</td>
