@@ -31,7 +31,7 @@ const Sidebar = ({ isOpen }) => {
           )}
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link as={Link} to="/cadastro-atendimento" className={isActive('/cadastro-atendimento') ? 'active' : ''}>
+          <Nav.Link as={Link} to="/historico-atendimentos" className={isActive('/historico-atendimentos') ? 'active' : ''}>
             <FaHeadset className="icon" /> {/* Ícone de suporte/atendimento ao cliente */}
             {isOpen && <span className="text special-text">Atendimentos</span>}
           </Nav.Link>

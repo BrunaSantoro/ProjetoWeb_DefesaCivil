@@ -1,5 +1,3 @@
-/* src/components/usuario/cadastroUsuario.css */
-
 :root {
   --body-color: #F9FAFC;
   --sidebar-color: #FFF;
@@ -27,6 +25,9 @@ body {
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: var(--sidebar-color);
+  max-width: 900px; /* Largura máxima aumentada */
+  width: 80%; /* Largura ajustada */
+  margin: 0 auto; /* Centraliza o container horizontalmente */
 }
 
 h3 {
@@ -76,4 +77,23 @@ hr {
 .d-grid.gap-2 .btn:hover {
   background-color: var(--primary-color-light);
   border-color: var(--primary-color-light);
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-row label {
+    text-align: left;
+    margin-right: 0;
+  }
+
+  .form-row input,
+  .form-row select {
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 0;
+  }
 }

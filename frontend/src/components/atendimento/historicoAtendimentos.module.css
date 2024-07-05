@@ -1,67 +1,109 @@
-/* src/components/atendimento/historicoAtendimentos.css */
+:root {
+  --body-color: #F9FAFC;
+  --sidebar-color: #FFF;
+  --primary-color: #BBD8F0;
+  --primary-color-light: #F6F5FF;
+  --toggle-color: #DDD;
+  --icon-color: #95BFE1;
+  --text-color: #696262;
+  --special-text-color: #252525;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.3s ease;
+  --tran-05: all 0.3s ease;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--body-color);
+  transition: var(--tran-05);
+}
+
 .container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--sidebar-color);
+  max-width: 900px; /* Largura máxima aumentada */
+  width: 80%; /* Largura ajustada */
+  margin: 0 auto; /* Centraliza o container horizontalmente */
+}
+
+h3 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+hr {
+  margin-top: 30px;
+  border: 1px solid #c0c0c0;
+  margin-bottom: 30px;
+}
+
+.mt-4 .btn-secondary {
+  background-color: #BAB4B4;
+  border-color: #BAB4B4;
+}
+
+.mt-4 .btn-primary {
+  background-color: #2987C0;
+  border-color: #2987C0;
+}
+
+.bd {
+  background-color: #FFF;
+}
+
+.input-group .input-group-append .btn {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.input-group .form-control {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.input-group .btn {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.d-grid.gap-2 .btn {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.d-grid.gap-2 .btn:hover {
+  background-color: var(--primary-color-light);
+  border-color: var(--primary-color-light);
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+    align-items: center;
   }
-  
-  h1 {
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .search-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .atendimentos-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  
-  .atendimentos-table th, .atendimentos-table td {
-    padding: 10px;
-    border: 1px solid #ddd;
+
+  .form-row label {
     text-align: left;
+    margin-right: 0;
   }
-  
-  .atendimentos-table th {
-    background-color: #f4f4f4;
+
+  .form-row input,
+  .form-row select {
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 0;
   }
-  
-  .atendimentos-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .pagination button {
-    padding: 10px 15px;
-    margin: 0 5px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  .pagination button.active {
-    background-color: #0056b3;
-  }
-  
-  .pagination button:hover {
-    background-color: #0056b3;
-  }
-  
+}
+
+.table {
+  margin-top: 20px;
+}
+
+.pagination {
+  margin-top: 20px;
+}
+

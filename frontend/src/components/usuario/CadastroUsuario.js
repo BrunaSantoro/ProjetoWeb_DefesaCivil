@@ -56,7 +56,7 @@ const CadastroUsuario = () => {
   };
 
   return (
-    <Container className="bd m-0 border-0">
+    <Container className="bd">
       <h3 className="my-3">Cadastro de Usuário</h3>
       <hr className="mb-4" />
       <Form onSubmit={handleSubmit}>

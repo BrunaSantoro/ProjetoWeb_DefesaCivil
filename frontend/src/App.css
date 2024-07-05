@@ -1,4 +1,10 @@
-/* src/App.css */
+body {
+  background-color: #F9FAFC;
+  min-height: 100vh;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
 .main-content {
   display: flex;
 }
@@ -6,6 +12,11 @@
 .content {
   flex-grow: 1;
   padding: 20px;
+  background-color: #F9FAFC;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .main-content:not(.no-sidebar) .content {
@@ -67,4 +78,14 @@
 
 .sidebar.closed ~ .content {
   margin-left: 70px; /* Compensar a largura da sidebar fechada */
+}
+
+.container {
+  padding: 20px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  max-width: 900px; /* Largura máxima para centralizar o conteúdo */
+  width: 100%;
 }
