@@ -39,8 +39,8 @@ api.interceptors.response.use(
 
       try {
         const newAccessToken = await refreshToken();
-        localStorage.setItem('accessToken', `Bearer ${newAccessToken}`);
-        originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+        localStorage.setItem('accessToken', `${newAccessToken}`);
+        originalRequest.headers.Authorization = `${newAccessToken}`;
 
         return api(originalRequest);
       } catch (e) {
