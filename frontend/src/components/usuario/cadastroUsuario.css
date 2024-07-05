@@ -1,122 +1,79 @@
 /* src/components/usuario/cadastroUsuario.css */
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-  }
-  
-  .navbar {
-    background-color: #005699;
-    color: white;
-    padding: 10px 0;
-  }
-  
-  .navbar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .navbar ul li {
-    margin: 0 10px;
-  }
-  
-  .navbar ul li a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    display: block;
-  }
-  
-  .navbar ul li a:hover {
-    background-color: #0056b3;
-  }
-  
-  .container {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  h1 {
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .form-row {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-bottom: 10px;
-  }
-  
-  .form-row label {
-    min-width: 120px;
-    margin-right: 10px;
-  }
-  
-  .form-row input,
-  .form-row select {
-    flex: 1;
-    padding: 8px;
-    margin-right: 10px;
-    border: 2px solid #ccc;
-    box-sizing: border-box;
-  }
-  
-  .form-row input:last-child,
-  .form-row select:last-child {
-    margin-right: 0;
-  }
-  
-  .form-row .form-group {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 48%;
-  }
-  
-  textarea {
-    resize: vertical;
-  }
-  
-  .form-actions {
-    text-align: right;
-    margin-top: 20px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  @media (max-width: 600px) {
-    .form-row {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .form-row label {
-      text-align: left;
-      margin-right: 0;
-    }
-  
-    .form-row input,
-    .form-row select {
-      width: 100%;
-      margin-top: 10px;
-      margin-left: 0;
-    }
-  }  
+
+:root {
+  --body-color: #F9FAFC;
+  --sidebar-color: #FFF;
+  --primary-color: #BBD8F0;
+  --primary-color-light: #F6F5FF;
+  --toggle-color: #DDD;
+  --icon-color: #95BFE1;
+  --text-color: #696262;
+  --special-text-color: #252525;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.3s ease;
+  --tran-05: all 0.3s ease;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--body-color);
+  transition: var(--tran-05);
+}
+
+.container {
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--sidebar-color);
+}
+
+h3 {
+  margin-bottom: 20px;
+}
+
+hr {
+  margin-top: 30px;
+  border: 1px solid #c0c0c0;
+  margin-bottom: 30px;
+}
+
+.mt-4 .btn-secondary {
+  background-color: #BAB4B4;
+  border-color: #BAB4B4;
+}
+
+.mt-4 .btn-primary {
+  background-color: #2987C0;
+  border-color: #2987C0;
+}
+
+.bd {
+  background-color: #FFF;
+}
+
+.input-group .input-group-append .btn {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.input-group .form-control {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.input-group .btn {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.d-grid.gap-2 .btn {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.d-grid.gap-2 .btn:hover {
+  background-color: var(--primary-color-light);
+  border-color: var(--primary-color-light);
+}

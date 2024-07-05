@@ -1,54 +1,133 @@
-// src/components/usuario/CadastroUsuario.js
-import React from 'react';
-import Navbar from '../Navbar';
+import React, { useState } from 'react';
+import { Form, Button, Col, Row, Container, Toast, ToastContainer } from 'react-bootstrap';
 import './cadastroUsuario.css'; // Importa o CSS específico para o componente CadastroUsuario
+import { postUsuario } from '../../services/usuario/usuarioService';
 
 const CadastroUsuario = () => {
+  const [formData, setFormData] = useState({
+    nome: '',
+    cpf: '',
+    telefone: '',
+    cidade: '',
+    cargo: '',
+    email: '',
+    estado: '',
+    senha: ''
+  });
+
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [showSuccessToast, setShowSuccessToast] = useState(false);
+  const [showErrorToast, setShowErrorToast] = useState(false);
+
   const cancelar = () => {
     window.history.back(); // Volta para a página anterior
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await postUsuario(formData);
+      setSuccessMessage('Usuário criado com sucesso.');
+      setErrorMessage('');
+      setShowSuccessToast(true);
+      setTimeout(() => setShowSuccessToast(false), 3000);
+      setFormData({
+        nome: '',
+        cpf: '',
+        telefone: '',
+        cidade: '',
+        cargo: '',
+        email: '',
+        estado: '',
+        senha: ''
+      });
+    } catch (error) {
+      setErrorMessage('Erro ao criar usuário: ' + error.message);
+      setSuccessMessage('');
+      setShowErrorToast(true);
+      setTimeout(() => setShowErrorToast(false), 3000);
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
   return (
-    <div>
-      <Navbar />
-      <div className="container">
-        <h1>Cadastro de Usuário</h1>
-        <form action="#" method="POST">
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="nome">Nome completo:</label>
-              <input id="nome" type="text" placeholder="Digite aqui" />
-            </div>
-            <div className="form-group">
-              <label htmlFor="cpf">Cadastro de Pessoa Física (CPF):</label>
-              <input id="cpf" type="text" placeholder="Digite aqui" />
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="telefone">Número de telefone:</label>
-              <input id="telefone" type="text" placeholder="Digite aqui" />
-            </div>
-            <div className="form-group">
-              <label htmlFor="cidade">Cidade de atuação:</label>
-              <input id="cidade" type="text" placeholder="Digite aqui" />
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="cargo">Cargo:</label>
-              <input id="cargo" type="text" placeholder="Digite aqui" />
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">Email:</label>
-              <input id="email" type="email" placeholder="Digite aqui" />
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="estado">Estado:</label>
-              <select id="estado">
-                <option>Selecionar estado</option>
+    <Container className="bd m-0 border-0">
+      <h3 className="my-3">Cadastro de Usuário</h3>
+      <hr className="mb-4" />
+      <Form onSubmit={handleSubmit}>
+        <Row className="mb-4">
+          <Col md={12}>
+            <Form.Group controlId="formNome">
+              <Form.Label>Nome completo</Form.Label>
+              <Form.Control
+                type="text"
+                name="nome"
+                placeholder="Digite aqui"
+                value={formData.nome}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+          </Col>
+        </Row>
+        <Row className="mb-4">
+          <Col md={6}>
+            <Form.Group controlId="formCpf">
+              <Form.Label>Cadastro de Pessoa Física (CPF)</Form.Label>
+              <Form.Control
+                type="text"
+                name="cpf"
+                placeholder="Digite aqui"
+                value={formData.cpf}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+          </Col>
+          <Col md={6}>
+            <Form.Group controlId="formTelefone">
+              <Form.Label>Número de telefone</Form.Label>
+              <Form.Control
+                type="text"
+                name="telefone"
+                placeholder="Digite aqui"
+                value={formData.telefone}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+          </Col>
+        </Row>
+        <Row className="mb-4">
+          <Col md={6}>
+            <Form.Group controlId="formCidade">
+              <Form.Label>Cidade de atuação</Form.Label>
+              <Form.Control
+                type="text"
+                name="cidade"
+                placeholder="Digite aqui"
+                value={formData.cidade}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+          </Col>
+          <Col md={6}>
+            <Form.Group controlId="formEstado">
+              <Form.Label>Estado</Form.Label>
+              <Form.Control
+                as="select"
+                name="estado"
+                value={formData.estado}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Selecionar estado</option>
                 <option value="AC">Acre</option>
                 <option value="AL">Alagoas</option>
                 <option value="AP">Amapá</option>
@@ -76,20 +155,86 @@ const CadastroUsuario = () => {
                 <option value="SP">São Paulo</option>
                 <option value="SE">Sergipe</option>
                 <option value="TO">Tocantins</option>
-              </select>
+              </Form.Control>
+            </Form.Group>
+          </Col>
+        </Row>
+        <Row className="mb-4">
+          <Col md={6}>
+            <Form.Group controlId="formCargo">
+              <Form.Label>Cargo</Form.Label>
+              <Form.Control
+                type="text"
+                name="cargo"
+                placeholder="Digite aqui"
+                value={formData.cargo}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+          </Col>
+          <Col md={6}>
+            <Form.Group controlId="formEmail">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                name="email"
+                placeholder="Digite aqui"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+          </Col>
+        </Row>
+        <Row className="mb-4">
+          <Col md={6}>
+            <Form.Group controlId="formSenha">
+              <Form.Label>Gerar senha</Form.Label>
+              <Form.Control
+                type="password"
+                name="senha"
+                placeholder="Senha"
+                value={formData.senha}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+          </Col>
+        </Row>
+        <Row className="mt-4">
+          <Col md={6}></Col>
+          <Col md={6}>
+            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+              <Button
+                type="button"
+                variant="secondary"
+                onClick={cancelar}
+                style={{ backgroundColor: '#BAB4B4', borderColor: '#BAB4B4' }}
+              >
+                Cancelar
+              </Button>
+              <Button
+                variant="primary"
+                type="submit"
+                style={{ backgroundColor: '#2987C0', borderColor: '#2987C0' }}
+              >
+                Salvar
+              </Button>
             </div>
-            <div className="form-group">
-              <label htmlFor="senha">Gerar senha:</label>
-              <input id="senha" type="password" placeholder="Senha" />
-            </div>
-          </div>
-          <div className="form-actions">
-            <button type="button" onClick={cancelar}>Cancelar</button>
-            <button type="submit">Salvar</button>
-          </div>
-        </form>
-      </div>
-    </div>
+          </Col>
+        </Row>
+      </Form>
+
+      <ToastContainer position="top-end" className="p-3">
+        <Toast show={showSuccessToast} bg="success" onClose={() => setShowSuccessToast(false)}>
+          <Toast.Body>{successMessage}</Toast.Body>
+        </Toast>
+        <Toast show={showErrorToast} bg="danger" onClose={() => setShowErrorToast(false)}>
+          <Toast.Body>{errorMessage}</Toast.Body>
+        </Toast>
+      </ToastContainer>
+    </Container>
   );
 };
 

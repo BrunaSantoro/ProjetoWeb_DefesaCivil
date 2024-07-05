@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Pagination, Form, Button, Container, Row, Col } from 'react-bootstrap';
+import { Table, Pagination, Form, Button, Container, Row, Col, Dropdown, DropdownButton } from 'react-bootstrap';
 import { fetchAcontecimentos } from '../../services/acontecimento/acontecimentoService';
 import './HistoricoAcontecimentos.module.css';
 
@@ -83,31 +83,31 @@ const HistoricoAcontecimentos = () => {
       <Table striped bordered hover>
         <thead>
           <tr>
-            {/* <th className="text-center">Classe</th> */}
-            {/* <th className="text-center">Grupo</th> */}
-            <th className="text-center">Subgrupo</th>
-            <th className="text-center">Tipo</th>
-            {/* <th className="text-center">Subtipo</th> */}
-            <th className="text-center">Cobrade</th>
-            <th className="text-center">Número Protocolo</th>
+            <th className="text-center">Info Cobrade</th>
+            <th className="text-center">Numero Protocolo</th>
             <th className="text-center">Data e Hora</th>
             <th className="text-center">Cidadão</th>
+            <th className="text-center">CPF</th>
             <th className="text-center">Endereço</th>
+            <th className="text-center">Ação</th>
           </tr>
         </thead>
         <tbody>
           {acontecimentos.map((acontecimento) => (
             <tr key={acontecimento._id}>
-              {/* <td className="text-center">{acontecimento.classe}</td> */}
-              {/* <td className="text-center">{acontecimento.grupo}</td> */}
-              <td className="text-center">{acontecimento.subgrupo}</td>
-              <td className="text-center">{acontecimento.tipo}</td>
-              {/* <td className="text-center">{acontecimento.subtipo}</td> */}
               <td className="text-center">{acontecimento.infoCobrade}</td>
               <td className="text-center">{acontecimento.numeroProtocolo}</td>
               <td className="text-center">{new Date(acontecimento.dataHora).toLocaleString()}</td>
               <td className="text-center">{acontecimento.cidadaoResponsavel}</td>
+              <td className="text-center">{acontecimento.cpf}</td>
               <td className="text-center">{`${acontecimento.rua}, ${acontecimento.bairro}, ${acontecimento.cidade}, ${acontecimento.estado}`}</td>
+              <td className="text-center">
+                <DropdownButton id="dropdown-basic-button" title="Ação" className="acao-button">
+                  <Dropdown.Item href="#/editar">Editar</Dropdown.Item>
+                  <Dropdown.Item href="#/visualizar">Visualizar</Dropdown.Item>
+                  <Dropdown.Item href="#/deletar">Deletar</Dropdown.Item>
+                </DropdownButton>
+              </td>
             </tr>
           ))}
         </tbody>

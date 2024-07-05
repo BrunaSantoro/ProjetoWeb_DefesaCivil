@@ -1,7 +1,7 @@
 import React from 'react';
 import { Nav } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
-import { FaHome, FaUser, FaCloudRain, FaHeadset } from 'react-icons/fa'; // Importando FaHeadset
+import { FaHome, FaUser, FaCloudRain, FaHeadset, FaUserShield } from 'react-icons/fa'; // Importando FaUserShield para Usuários
 import './sidebar.css';
 
 const Sidebar = ({ isOpen }) => {
@@ -52,6 +52,12 @@ const Sidebar = ({ isOpen }) => {
               <Nav.Link as={Link} to="/historico-cidadaos" className={isActive('/historico-cidadaos') ? 'active' : ''}>Histórico</Nav.Link>
             </Nav>
           )}
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link as={Link} to="/cadastro-usuario" className={isActive('/cadastro-usuario') ? 'active' : ''}>
+            <FaUserShield className="icon" /> {/* Ícone de usuário */}
+            {isOpen && <span className="text special-text">Usuários</span>}
+          </Nav.Link>
         </Nav.Item>
       </Nav>
     </div>
