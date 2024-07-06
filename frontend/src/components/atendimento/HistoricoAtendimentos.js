@@ -122,6 +122,8 @@ const HistoricoAtendimentos = () => {
                   <Dropdown.Item onClick={() => handleOpenPopup(atendimento)}>Visualizar</Dropdown.Item>
                   <Dropdown.Item href="#/editar">Editar</Dropdown.Item>
                   <Dropdown.Item href="#/deletar">Deletar</Dropdown.Item>
+                  <Dropdown.Item href="#/deletar">Relatório de atendimento</Dropdown.Item>
+                  <Dropdown.Item href="#/deletar">Recibo dos itens entregues</Dropdown.Item>
                 </DropdownButton>
               </td>
             </tr>

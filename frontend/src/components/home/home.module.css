@@ -1,22 +1,24 @@
+.home-container {
+  height: 10px;
+  background-color: #F9FAFC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0; /* Ensure no padding */
+  margin: 0; /* Ensure no margin */
+}
+
 .home-boas-vindas {
   width: 80%;
-  max-width: 100px; /* Ajuste conforme necessário */
+  max-width: 150px; /* Adjust as necessary */
 }
 
-.content-section {
-  margin-left: 40px; /* Aumenta o espaçamento entre a imagem e o texto */
-}
-
-h1 {
-  font-size: 30px; 
-}
-
-h2 {
-  font-size: 20px; /* Diminuir tamanho da fonte dos subtítulos */
-  margin-bottom: 15px;
-}
-
-p {
-  font-size: 15px; /* Diminuir tamanho da fonte do texto */
-  margin-bottom: 35px;
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+  > .col,
+  > [class*='col-'] {
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
