@@ -103,7 +103,7 @@ const HistoricoAcontecimentos = () => {
             <th className="text-center">Data e Hora</th>
             <th className="text-center">Cidadão</th>
             <th className="text-center">Endereço</th>
-            <th className="text-center">Ação</th>
+            <th className="text-center">Opções</th>
           </tr>
         </thead>
         <tbody>
@@ -117,7 +117,7 @@ const HistoricoAcontecimentos = () => {
               <td className="text-center">{acontecimento.cidadaoResponsavel}</td>
               <td className="text-center">{`${acontecimento.rua}, ${acontecimento.bairro}, ${acontecimento.cidade}, ${acontecimento.estado}`}</td>
               <td className="text-center">
-                <DropdownButton id="dropdown-basic-button" title="Ação" className="acao-button">
+                <DropdownButton id="dropdown-basic-button" title="Opções" className="acao-button" style={{ backgroundColor: '#78A6C7'}}>
                   <Dropdown.Item onClick={() => handleShowModal(acontecimento)}>Visualizar</Dropdown.Item>
                   <Dropdown.Item href="#/editar">Editar</Dropdown.Item>
                   <Dropdown.Item href="#/deletar">Deletar</Dropdown.Item>

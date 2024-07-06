@@ -1,3 +1,17 @@
+:root {
+  --body-color: #F9FAFC; /* Cor de fundo atualizada */
+  --sidebar-color: #FFF;
+  --primary-color: #BBD8F0;
+  --primary-color-light: #F6F5FF;
+  --toggle-color: #DDD;
+  --icon-color: #95BFE1;
+  --text-color: #696262;
+  --special-text-color: #252525;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.3s ease;
+  --tran-05: all 0.3s ease;
+}
+
 .container {
   margin-top: 20px;
 }
@@ -51,4 +65,5 @@ hr {
   background-color: #2987C0;
   border-color: #2987C0;
 }
+
 

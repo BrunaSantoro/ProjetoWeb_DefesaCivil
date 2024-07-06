@@ -692,10 +692,14 @@ const CadastroAcontecimento = () => {
               className="form-control"
             />
             <div className="input-group-append">
-              <Button variant="primary" onClick={handleSearch}>
-                Pesquisar
-              </Button>
-            </div>
+                  <Button
+                    type="button"
+                    onClick={() => setShowModal(true)}
+                    style={{ backgroundColor: '#78A6C7', borderTopLeftRadius: '0', borderBottomLeftRadius: '0' }}
+                  >
+                    Pesquisar
+                  </Button>
+                </div>
           </div>
           <Table striped bordered hover className="mt-3">
             <thead>

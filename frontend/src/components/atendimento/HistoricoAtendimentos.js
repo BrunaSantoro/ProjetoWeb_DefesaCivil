@@ -119,7 +119,7 @@ const HistoricoAtendimentos = () => {
               <td className="text-center">{atendimento.atendente}</td>
               <td className="text-center">
                 <DropdownButton id="dropdown-basic-button" title="Opções" className="acao-button">
-                  <Dropdown.Item onClick={() => handleOpenPopup(atendimento)}>Histórico</Dropdown.Item>
+                  <Dropdown.Item onClick={() => handleOpenPopup(atendimento)}>Visualizar</Dropdown.Item>
                   <Dropdown.Item href="#/editar">Editar</Dropdown.Item>
                   <Dropdown.Item href="#/deletar">Deletar</Dropdown.Item>
                 </DropdownButton>
