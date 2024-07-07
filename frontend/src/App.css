@@ -89,3 +89,7 @@ body {
   max-width: 900px; /* Largura máxima para centralizar o conteúdo */
   width: 100%;
 }
+
+.tooltip-inner {
+  border: none !important;
+}

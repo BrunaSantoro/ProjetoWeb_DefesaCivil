@@ -32,7 +32,7 @@
 
 h3 {
   margin-bottom: 20px;
-  font-size: 24px; /* Diminuir o tamanho da fonte */
+  font-size: 16px; /* Diminuir o tamanho da fonte */
 }
 
 hr {
@@ -66,4 +66,64 @@ hr {
   border-color: #2987C0;
 }
 
+.modal-content {
+  display: flex;
+  justify-content: space-between;
+  border: none;
+}
 
+.acontecimento, .atendimento {
+  width: 45%;
+}
+
+.acontecimento h5, .atendimento h5 {
+  margin-bottom: 15px;
+  font-size: 1.2em;
+}
+
+.acontecimento p, .atendimento p {
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+.acontecimento p strong, .atendimento p strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.no-border {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.icon {
+  margin-right: 10px; /* Espaçamento entre o ícone e o texto */
+}
+
+.text {
+  margin-left: 10px;
+  font-weight: bold; /* Deixa o texto em negrito */
+}
+
+.acontecimento p, .atendimento p {
+  margin-bottom: 5px;
+  font-size: 16px; /* Definir fonte para 16px */
+}
+
+.acontecimento p:nth-of-type(odd), .atendimento p:nth-of-type(odd) {
+  font-weight: bold;
+}
+
+.acontecimento p:nth-of-type(even), .atendimento p:nth-of-type(even) {
+  margin-left: 15px; /* Ajuste a margem esquerda para alinhar abaixo do título */
+}
+
+div.tooltip .tooltip-inner {
+  border: none !important;
+}
