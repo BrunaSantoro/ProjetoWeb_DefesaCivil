@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button, Col, Row, Container } from 'react-bootstrap';
+import { Form, Button, Col, Row, Container, Alert } from 'react-bootstrap';
 import Navbar from '../Navbar';
 import styles from './cadastroCidadao.module.css'; // Estilos para o componente CadastroCidadao
 import { postCidadao } from '../../services/cidadao/cidadaoService';
@@ -20,6 +20,8 @@ const CadastroCidadao = () => {
 
   const [cepLength, setCepLength] = useState(0);
   const [cepNotFound, setCepNotFound] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleCadastro = async (event) => {
     event.preventDefault();
@@ -51,9 +53,11 @@ const CadastroCidadao = () => {
       setCidade('');
       setEstado('');
       setTelefone('');
-      alert('Cidadão cadastrado com sucesso!');
+      setSuccessMessage('Cidadão cadastrado com sucesso!');
+      setTimeout(() => setSuccessMessage(''), 5000);
     } catch (error) {
-      alert('Erro ao cadastrar cidadão: ' + error.message);
+      setErrorMessage('Erro ao cadastrar cidadão: ' + error.message);
+      setTimeout(() => setErrorMessage(''), 5000);
     }
   };
 
@@ -97,6 +101,8 @@ const CadastroCidadao = () => {
       <Container className="bd m-0 border-0">
         <h3 className="my-3">Cadastro de Cidadão</h3>
         <hr className="mb-4" />
+        {successMessage && <Alert variant="success">{successMessage}</Alert>}
+        {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
         <Form id="cadastroForm" onSubmit={handleCadastro} className="form-container">
           <Row className="mb-4">
             <Col md={12}>

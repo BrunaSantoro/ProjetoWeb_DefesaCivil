@@ -198,7 +198,7 @@ const CadastroAcontecimento = () => {
   const getGrupoOptions = (classe) => {
     const options = {
       Natural: ['Geológico', 'Hidrológico', 'Metereológico', 'Climatológico', 'Biológico'],
-      Tecnológica: ['Substâncias Radioativos', 'Produtos Perigosos', 'Incêndios Urbanos', 'Obras Civis', 'Passageiros e Cargas não Perigosas'],
+      Tecnológica: ['Substâncias Radioativas', 'Produtos Perigosos', 'Incêndios Urbanos', 'Obras Civis', 'Passageiros e Cargas não Perigosas'],
       Vistoria: ['Primeira Vistoria', 'Segunda Vistoria']
     };
     return options[classe] || [];
@@ -211,7 +211,7 @@ const CadastroAcontecimento = () => {
       Metereológico: ['Sistema de Grande Escala', 'Tempestades', 'Temperaturas Extremas'],
       Climatológico: ['Seca'],
       Biológico: ['Epidemias', 'Infestação/Pragas'],
-      'Substâncias Radioativos': ['Desastres Siderais', 'Equipamentos Radioativos', 'Poluíção Radioativa'],
+      'Substâncias Radioativas': ['Desastres Siderais', 'Equipamentos Radioativos', 'Poluíção Radioativa'],
       'Produtos Perigosos': ['Extravasamento de Produtos', 'Contaminação de Água', 'Conflitos Bélicos', 'Transporte de Produtos'],
       'Incêndios Urbanos': ['Incêndios Urbanos'],
       'Obras Civis': ['Colapso de Edificações', 'Colapso de Barragens'],

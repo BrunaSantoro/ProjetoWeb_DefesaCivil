@@ -109,6 +109,15 @@ hr {
   border-color: #2987C0;
 }
 
+.mainContent {
+  display: flex;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
 .container {
   padding: 20px;
   margin-top: 20px;
