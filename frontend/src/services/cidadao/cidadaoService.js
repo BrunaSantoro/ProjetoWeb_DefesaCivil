@@ -1,5 +1,6 @@
 import api from '../api';
 
+// Função para buscar cidadãos
 export const fetchCidadaos = async (query, dataInicio, dataFim) => {
   try {
     const response = await api.get('/cidadaos/search', {
@@ -33,3 +34,30 @@ export const postCidadao = async (cidadao) => {
     throw new Error('Erro durante a solicitação HTTP');
   }
 }
+
+// Função para deletar um cidadão
+export const deleteCidadao = async (id) => {
+  try {
+    const response = await api.delete(`/cidadaos/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao deletar cidadão:', error);
+    throw new Error('Erro ao deletar cidadão: ' + error.message);
+  }
+};
+
+// Função para atualizar um cidadão
+export const updateCidadao = async (id, updatedData) => {
+  try {
+    const response = await api.put(`/cidadaos/${id}`, JSON.stringify(updatedData), {
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao atualizar cidadão:', error);
+    throw new Error('Erro ao atualizar cidadão: ' + error.message);
+  }
+};
