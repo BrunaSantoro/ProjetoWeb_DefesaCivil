@@ -5,14 +5,13 @@ import { postUsuario } from '../../services/usuario/usuarioService';
 
 const CadastroUsuario = () => {
   const [formData, setFormData] = useState({
-    nome: '',
+    username: '',
+    email: '',
+    password: '',
     cpf: '',
     telefone: '',
-    cidade: '',
     cargo: '',
-    email: '',
-    estado: '',
-    senha: ''
+    cidadeDeAtuacao: ''
   });
 
   const [successMessage, setSuccessMessage] = useState('');
@@ -33,14 +32,13 @@ const CadastroUsuario = () => {
       setShowSuccessToast(true);
       setTimeout(() => setShowSuccessToast(false), 3000);
       setFormData({
-        nome: '',
+        username: '',
+        email: '',
+        password: '',
         cpf: '',
         telefone: '',
-        cidade: '',
         cargo: '',
-        email: '',
-        estado: '',
-        senha: ''
+        cidadeDeAtuacao: ''
       });
     } catch (error) {
       setErrorMessage('Erro ao criar usuário: ' + error.message);
@@ -62,13 +60,13 @@ const CadastroUsuario = () => {
       <Form onSubmit={handleSubmit}>
         <Row className="mb-4">
           <Col md={12}>
-            <Form.Group controlId="formNome">
+            <Form.Group controlId="formUsername">
               <Form.Label>Nome completo</Form.Label>
               <Form.Control
                 type="text"
-                name="nome"
+                name="username"
                 placeholder="Digite aqui"
-                value={formData.nome}
+                value={formData.username}
                 onChange={handleChange}
                 required
               />
@@ -105,61 +103,18 @@ const CadastroUsuario = () => {
         </Row>
         <Row className="mb-4">
           <Col md={6}>
-            <Form.Group controlId="formCidade">
+            <Form.Group controlId="formCidadeDeAtuacao">
               <Form.Label>Cidade de atuação</Form.Label>
               <Form.Control
                 type="text"
-                name="cidade"
+                name="cidadeDeAtuacao"
                 placeholder="Digite aqui"
-                value={formData.cidade}
+                value={formData.cidadeDeAtuacao}
                 onChange={handleChange}
                 required
               />
             </Form.Group>
           </Col>
-          <Col md={6}>
-            <Form.Group controlId="formEstado">
-              <Form.Label>Estado</Form.Label>
-              <Form.Control
-                as="select"
-                name="estado"
-                value={formData.estado}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Selecionar estado</option>
-                <option value="AC">Acre</option>
-                <option value="AL">Alagoas</option>
-                <option value="AP">Amapá</option>
-                <option value="AM">Amazonas</option>
-                <option value="BA">Bahia</option>
-                <option value="CE">Ceará</option>
-                <option value="DF">Distrito Federal</option>
-                <option value="ES">Espírito Santo</option>
-                <option value="GO">Goiás</option>
-                <option value="MA">Maranhão</option>
-                <option value="MT">Mato Grosso</option>
-                <option value="MS">Mato Grosso do Sul</option>
-                <option value="MG">Minas Gerais</option>
-                <option value="PA">Pará</option>
-                <option value="PB">Paraíba</option>
-                <option value="PR">Paraná</option>
-                <option value="PE">Pernambuco</option>
-                <option value="PI">Piauí</option>
-                <option value="RJ">Rio de Janeiro</option>
-                <option value="RN">Rio Grande do Norte</option>
-                <option value="RS">Rio Grande do Sul</option>
-                <option value="RO">Rondônia</option>
-                <option value="RR">Roraima</option>
-                <option value="SC">Santa Catarina</option>
-                <option value="SP">São Paulo</option>
-                <option value="SE">Sergipe</option>
-                <option value="TO">Tocantins</option>
-              </Form.Control>
-            </Form.Group>
-          </Col>
-        </Row>
-        <Row className="mb-4">
           <Col md={6}>
             <Form.Group controlId="formCargo">
               <Form.Label>Cargo</Form.Label>
@@ -173,6 +128,8 @@ const CadastroUsuario = () => {
               />
             </Form.Group>
           </Col>
+        </Row>
+        <Row className="mb-4">
           <Col md={6}>
             <Form.Group controlId="formEmail">
               <Form.Label>Email</Form.Label>
@@ -186,16 +143,14 @@ const CadastroUsuario = () => {
               />
             </Form.Group>
           </Col>
-        </Row>
-        <Row className="mb-4">
           <Col md={6}>
-            <Form.Group controlId="formSenha">
+            <Form.Group controlId="formPassword">
               <Form.Label>Gerar senha</Form.Label>
               <Form.Control
                 type="password"
-                name="senha"
+                name="password"
                 placeholder="Senha"
-                value={formData.senha}
+                value={formData.password}
                 onChange={handleChange}
                 required
               />
