@@ -18,20 +18,27 @@ const HistoricoUsuarios = () => {
 
   const loadUsuarios = useCallback(async (page = 1) => {
     try {
-      const data = await fetchUsuarios(query, startDate, endDate);
+      const data = await fetchUsuarios();
+      console.log('Data fetched:', data); // Log para verificar os dados retornados
       setUsuarios(data.usuarios);
+      if (data && data.usuarios) {
+        setUsuarios(data.usuarios);
+        setTotalPages(Math.ceil(data.total / 10));
+      } else {
+        setUsuarios([]);
+        setTotalPages(1);
+      }
       setCurrentPage(page);
-      setTotalPages(Math.ceil(data.total / 10));
     } catch (error) {
       console.error('Erro ao buscar usuários:', error);
+      setUsuarios([]); // Garantir que usuarios seja uma lista vazia em caso de erro
+      setTotalPages(1);
     }
-  }, [query, startDate, endDate]); // Dependências de useCallback
-  
+  }, []);
+
   useEffect(() => {
     loadUsuarios();
-  }, [loadUsuarios]); // loadUsuarios agora está estável
-  
-  
+  }, [loadUsuarios]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -128,25 +135,31 @@ const HistoricoUsuarios = () => {
           <tr>
             <th className="text-center">Nome</th>
             <th className="text-center">CPF</th>
-            <th className="text-center">Data de Cadastro</th>
+            <th className="text-center">Cargo</th>
             <th className="text-center">Opções</th>
           </tr>
         </thead>
         <tbody>
-          {usuarios.map((usuario) => (
-            <tr key={usuario._id}>
-              <td className="text-center">{usuario.nome}</td>
-              <td className="text-center">{usuario.cpf}</td>
-              <td className="text-center">{new Date(usuario.dataCadastro).toLocaleDateString()}</td>
-              <td className="text-center">
-                <DropdownButton id="dropdown-basic-button" title="Opções" className="acao-button">
-                  <Dropdown.Item onClick={() => handleShowModal(usuario, false)}>Visualizar</Dropdown.Item>
-                  <Dropdown.Item onClick={() => handleShowModal(usuario, true)}>Editar</Dropdown.Item>
-                  <Dropdown.Item onClick={() => handleDelete(usuario._id)}>Deletar</Dropdown.Item>
-                </DropdownButton>
-              </td>
+          {usuarios.length > 0 ? (
+            usuarios.map((usuario) => (
+              <tr key={usuario._id}>
+                <td className="text-center">{usuario.username}</td>
+                <td className="text-center">{usuario.cpf}</td>
+                <td className="text-center">{usuario.cargo}</td>
+                <td className="text-center">
+                  <DropdownButton id="dropdown-basic-button" title="Opções" className="acao-button">
+                    <Dropdown.Item onClick={() => handleShowModal(usuario, false)}>Visualizar</Dropdown.Item>
+                    <Dropdown.Item onClick={() => handleShowModal(usuario, true)}>Editar</Dropdown.Item>
+                    <Dropdown.Item onClick={() => handleDelete(usuario._id)}>Deletar</Dropdown.Item>
+                  </DropdownButton>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="4" className="text-center">Nenhum usuário encontrado.</td>
             </tr>
-          ))}
+          )}
         </tbody>
       </Table>
       <Pagination className="justify-content-center">

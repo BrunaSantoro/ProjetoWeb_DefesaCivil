@@ -5,6 +5,7 @@ import Login from './components/auth/Login';
 import CadastroCidadao from './components/cidadao/CadastroCidadao';
 import CadastroAcontecimento from './components/acontecimento/CadastroAcontecimento';
 import CadastroUsuario from './components/usuario/CadastroUsuario';
+import HistoricoUsuarios from './components/usuario/HistoricoUsuario';
 import HistoricoAtendimentos from './components/atendimento/HistoricoAtendimentos';
 import HistoricoAcontecimentos from './components/acontecimento/HistoricoAcontecimentos';
 import HistoricoCidadaos from './components/cidadao/HistoricoCidadaos';
@@ -40,6 +41,7 @@ const AppLayout = () => {
             <Route path="/historico-atendimentos" element={<PrivateRoute element={<HistoricoAtendimentos />} />} />
             <Route path="/historico-acontecimentos" element={<PrivateRoute element={<HistoricoAcontecimentos />} />} />
             <Route path="/historico-cidadaos" element={<PrivateRoute element={<HistoricoCidadaos />} />} />
+            <Route path="/historico-usuarios" element={<PrivateRoute element={<HistoricoUsuarios />} />} />
           </Routes>
         </div>
       </div>

@@ -21,3 +21,33 @@ export const postUsuario = async (usuarioData) => {
       throw error;
     }
   };
+
+  export const fetchUsuarios = async () => {
+    try {
+      const response = await api.get('/auth/users');
+      return response.data;
+    } catch (error) {
+      console.error('Erro ao buscar usuários:', error);
+      throw error;
+    }
+  };
+  
+  export const deleteUsuario = async (id) => {
+    try {
+      const response = await api.delete(`/auth/delete/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error('Erro ao deletar usuário:', error);
+      throw error;
+    }
+  };
+  
+  export const updateUsuario = async (id, usuarioData) => {
+    try {
+      const response = await api.put(`/auth/update/${id}`, JSON.stringify(usuarioData));
+      return response.data;
+    } catch (error) {
+      console.error('Erro ao atualizar usuário:', error);
+      throw error;
+    }
+  };
