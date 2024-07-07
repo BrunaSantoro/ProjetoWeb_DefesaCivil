@@ -267,7 +267,7 @@ const CadastroAcontecimento = () => {
     const options = {
       'Tremor de Terra': ['TT - SubTipo não Definido (COBRADE)'],
       Tsunami: ['TS - SubTipo não Definido (COBRADE)'],
-      'EV - Tipo não Definido (COBRADE)': ['EV - SubTipo não Definido (COBRADE)'],
+      'EV - Tipo Não Definido (COBRADE)': ['EV - SubTipo não Definido (COBRADE)'],
       'Quedas, Tombamentos e Rolamentos': ['Blocos', 'Lascas', 'Matações', 'Lajes'],
       Deslizamentos: ['Deslizamentos de Solo/Rochas'],
       'Corridas de Massa': ['Solo/Lama', 'Rocha/Detrito'],
@@ -325,7 +325,7 @@ const CadastroAcontecimento = () => {
   const getCobrade = (tipo) => {
     const valoresAutomaticos = {
       'Tremor de Terra': '1.1.1.1.0',
-      Tsunami: '1.1.1.2.0',
+      'TS - SubTipo não Definido (COBRADE)': '1.1.1.2.0',
       'EV - SubTipo não Definido (COBRADE)': '1.1.2.0.0',
       'Blocos': '1.1.3.1.1',
       'Lascas': '1.1.3.1.2',
