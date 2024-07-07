@@ -151,130 +151,55 @@ const HistoricoAtendimentos = () => {
       </Pagination>
 
       {showPopup && (
-        <Modal show={showPopup} onHide={handleClosePopup} centered>
-          <Modal.Header closeButton>
-            <Modal.Title>{isEditing ? "Editar Atendimento" : "Informações do Atendimento"}</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <div className="modal-content no-border">
-              <div className="atendimento">
-                <h5>Atendimento</h5>
-                {isEditing ? (
-                  <>
-                    <p><strong>N° do Protocolo:</strong> {selectedAtendimento.nProtocolo}</p>
-                    <Row>
-                      <Col md={6}>
-                        <Form.Group controlId="formSubgrupo">
-                          <Form.Label>Subgrupo</Form.Label>
-                          <Form.Control
-                            type="text"
-                            name="subgrupo"
-                            value={selectedAtendimento.subgrupo}
-                            onChange={(e) => setSelectedAtendimento({ ...selectedAtendimento, subgrupo: e.target.value })}
-                          />
-                        </Form.Group>
-                      </Col>
-                      <Col md={6}>
-                        <Form.Group controlId="formTipo">
-                          <Form.Label>Tipo</Form.Label>
-                          <Form.Control
-                            type="text"
-                            name="tipo"
-                            value={selectedAtendimento.tipo}
-                            onChange={(e) => setSelectedAtendimento({ ...selectedAtendimento, tipo: e.target.value })}
-                          />
-                        </Form.Group>
-                      </Col>
-                      <Col md={6}>
-                        <Form.Group controlId="formCobrade">
-                          <Form.Label>COBRADE</Form.Label>
-                          <Form.Control
-                            type="text"
-                            name="cobrade"
-                            value={selectedAtendimento.cobrade}
-                            onChange={(e) => setSelectedAtendimento({ ...selectedAtendimento, cobrade: e.target.value })}
-                          />
-                        </Form.Group>
-                      </Col>
-                      <Col md={6}>
-                        <Form.Group controlId="formDataAtendimento">
-                          <Form.Label>Data do atendimento</Form.Label>
-                          <Form.Control
-                            type="date"
-                            name="dataAtendimento"
-                            value={selectedAtendimento.dataAtendimento}
-                            onChange={(e) => setSelectedAtendimento({ ...selectedAtendimento, dataAtendimento: e.target.value })}
-                          />
-                        </Form.Group>
-                      </Col>
-                      <Col md={6}>
-                        <Form.Group controlId="formBairro">
-                          <Form.Label>Bairro</Form.Label>
-                          <Form.Control
-                            type="text"
-                            name="bairro"
-                            value={selectedAtendimento.bairro}
-                            onChange={(e) => setSelectedAtendimento({ ...selectedAtendimento, bairro: e.target.value })}
-                          />
-                        </Form.Group>
-                      </Col>
-                      <Col md={6}>
-                        <Form.Group controlId="formCidade">
-                          <Form.Label>Cidade</Form.Label>
-                          <Form.Control
-                            type="text"
-                            name="cidade"
-                            value={selectedAtendimento.cidade}
-                            onChange={(e) => setSelectedAtendimento({ ...selectedAtendimento, cidade: e.target.value })}
-                          />
-                        </Form.Group>
-                      </Col>
-                      <Col md={6}>
-                        <Form.Group controlId="formAtendente">
-                          <Form.Label>Atendente</Form.Label>
-                          <Form.Control
-                            type="text"
-                            name="atendente"
-                            value={selectedAtendimento.atendente}
-                            onChange={(e) => setSelectedAtendimento({ ...selectedAtendimento, atendente: e.target.value })}
-                          />
-                        </Form.Group>
-                      </Col>
-                    </Row>
-                  </>
-                ) : (
-                  <>
-                    <p><strong>N° do Protocolo:</strong> {selectedAtendimento.nProtocolo}</p>
-                    <Row>
-                      <Col md={6}>
-                        <p><strong>Subgrupo:</strong> {selectedAtendimento.subgrupo}</p>
-                        <p><strong>Tipo:</strong> {selectedAtendimento.tipo}</p>
-                      </Col>
-                      <Col md={6}>
-                        <p><strong>COBRADE:</strong> {selectedAtendimento.cobrade}</p>
-                        <p><strong>Data do atendimento:</strong> {selectedAtendimento.dataAtendimento}</p>
-                      </Col>
-                      <Col md={6}>
-                        <p><strong>Bairro:</strong> {selectedAtendimento.bairro}</p>
-                        <p><strong>Cidade:</strong> {selectedAtendimento.cidade}</p>
-                      </Col>
-                      <Col md={6}>
-                        <p><strong>Atendente:</strong> {selectedAtendimento.atendente}</p>
-                      </Col>
-                    </Row>
-                  </>
-                )}
-              </div>
-            </div>
-          </Modal.Body>
-          <Modal.Footer>
-            {isEditing ? (
-              <Button variant="primary" onClick={handleSave}>Salvar</Button>
-            ) : (
-              <Button variant="secondary" onClick={handleClosePopup}>Fechar</Button>
-            )}
-          </Modal.Footer>
-        </Modal>
+       <Modal show={showPopup} onHide={handleClosePopup} centered>
+       <Modal.Header closeButton>
+         <Modal.Title>{isEditing ? "Editar Atendimento" : "Informações do Atendimento"}</Modal.Title>
+       </Modal.Header>
+       <Modal.Body>
+         <Container>
+           <Row>
+           <Col md={4} className="section">
+              <div className="section-content">
+                 <h5 className="section-title">Acontecimento</h5>
+                 <p><span className="dot dot-blue"></span>Subgrupo: {selectedAtendimento.subgrupo}</p>
+                 <p><span className="dot dot-blue"></span>Tipo: {selectedAtendimento.tipo}</p>
+                 <p><span className="dot dot-blue"></span>Evento: {selectedAtendimento.evento}</p>
+                 <p><span className="dot dot-blue"></span>COBRADE: {selectedAtendimento.cobrade}</p>
+                <p><span className="dot dot-blue"></span>N° do protocolo: {selectedAtendimento.nProtocolo}</p>
+               </div>
+             </Col>
+             <Col md={4} className="section">
+              <div className="section-content">
+                 <h5 className="section-title">Família/Cidadãos</h5>
+                 <p><span className="dot dot-red"></span>Nome do solicitante: {selectedAtendimento.nomeSolicitante}</p>
+                 <p><span className="dot dot-red"></span>CPF do solicitante: {selectedAtendimento.cpfSolicitante}</p>
+                 <p><span className="dot dot-red"></span>RG do solicitante: {selectedAtendimento.rgSolicitante}</p>
+                 <p><span className="dot dot-red"></span>Telefone do solicitante: {selectedAtendimento.telefoneSolicitante}</p>
+                 <p><span className="dot dot-red"></span>Número de pessoas no imóvel: {selectedAtendimento.numeroPessoas}</p>
+               </div>
+             </Col>
+             <Col md={4} className="section">
+              <div className="section-content">
+                 <h5 className="section-title">Atendimento</h5>
+                 <p><span className="dot dot-green"></span>Nome do atendente: {selectedAtendimento.nomeAtendente}</p>
+                 <p><span className="dot dot-green"></span>Código de identificação: {selectedAtendimento.codigoIdentificacao}</p>
+                 <p><span className="dot dot-green"></span>Data da visita: {selectedAtendimento.dataVisita}</p>
+                 <p><span className="dot dot-green"></span>Ocorrência: {selectedAtendimento.ocorrencia}</p>
+                 <p><span className="dot dot-green"></span>Endereço da ocorrência: {selectedAtendimento.enderecoOcorrencia}</p>
+               </div>
+             </Col>
+           </Row>
+         </Container>
+       </Modal.Body>
+       <Modal.Footer>
+         {isEditing ? (
+           <Button variant="primary" onClick={handleSave}>Salvar</Button>
+         ) : (
+           <Button variant="secondary" onClick={handleClosePopup}>Fechar</Button>
+         )}
+       </Modal.Footer>
+     </Modal>
+     
       )}
     </Container>
   );
