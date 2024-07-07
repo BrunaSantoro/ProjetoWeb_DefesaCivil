@@ -47,6 +47,11 @@ const CadastroAcontecimento = () => {
       console.error('Erro ao buscar cidadãos:', error);
     }
   };
+
+  const combinedClickHandler = () => {
+    setShowModal(true);
+    handleSearch();
+  };
   
   const handleSelectCidadao = (cidadao) => {
     setSelectedCidadao({ nome: cidadao.name, cpf: cidadao.cpf });
@@ -539,7 +544,7 @@ const CadastroAcontecimento = () => {
                 <div className="input-group-append">
                   <Button
                     type="button"
-                    onClick={() => setShowModal(true)}
+                    onClick={combinedClickHandler}
                     style={{ backgroundColor: '#78A6C7', borderTopLeftRadius: '0', borderBottomLeftRadius: '0' }}
                   >
                     Buscar
@@ -694,7 +699,7 @@ const CadastroAcontecimento = () => {
             <div className="input-group-append">
                   <Button
                     type="button"
-                    onClick={() => setShowModal(true)}
+                    onClick={handleSearch}
                     style={{ backgroundColor: '#78A6C7', borderTopLeftRadius: '0', borderBottomLeftRadius: '0' }}
                   >
                     Pesquisar
