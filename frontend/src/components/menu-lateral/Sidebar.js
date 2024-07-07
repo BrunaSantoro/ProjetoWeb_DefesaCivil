@@ -58,6 +58,12 @@ const Sidebar = ({ isOpen }) => {
             <FaUserShield className="icon" /> {/* Ícone de usuário */}
             {isOpen && <span className="text special-text">Usuários</span>}
           </Nav.Link>
+          {isOpen && (
+            <Nav className="flex-column ml-3">
+              <Nav.Link as={Link} to="/cadastro-usuario" className={isActive('/cadastro-usuario') ? 'active' : ''}>Cadastro</Nav.Link>
+              <Nav.Link as={Link} to="/historico-usuarios" className={isActive('/historico-usuarios') ? 'active' : ''}>Histórico</Nav.Link>
+            </Nav>
+          )}
         </Nav.Item>
       </Nav>
     </div>

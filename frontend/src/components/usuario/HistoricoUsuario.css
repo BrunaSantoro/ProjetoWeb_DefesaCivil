@@ -1,0 +1,59 @@
+/* HistoricoUsuario.css */
+.bd {
+    background-color: #fff; /* Fundo branco para o container */
+    padding: 20px; /* Espaçamento interno no container */
+    border-radius: 5px; /* Bordas arredondadas para o container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave ao redor do container */
+}
+
+.text-center {
+    text-align: center; /* Centraliza o texto das células da tabela */
+}
+
+.acao-button .dropdown-menu {
+    text-align: center; /* Centraliza os textos dentro dos dropdowns */
+}
+
+.modal-content {
+    border-radius: 5px; /* Bordas arredondadas para o modal */
+}
+
+.modal-header, .modal-footer {
+    border-bottom: none; /* Remove a borda inferior do cabeçalho do modal */
+    border-top: none; /* Remove a borda superior do rodapé do modal */
+}
+
+.modal-body {
+    padding: 20px; /* Espaçamento interno para o corpo do modal */
+}
+
+.form-control {
+    border-radius: 4px; /* Bordas arredondadas para os controles de formulário */
+    border: 1px solid #ccc; /* Borda sutil para os controles de formulário */
+}
+
+.button {
+    background-color: #2987C0; /* Cor de fundo para os botões */
+    border-color: #2987C0; /* Cor da borda para os botões */
+    color: white; /* Texto branco para os botões */
+}
+
+.button:hover {
+    background-color: #2176A9; /* Cor de fundo ao passar o mouse */
+    border-color: #1E6A93; /* Cor da borda ao passar o mouse */
+}
+
+.table {
+    margin-top: 20px; /* Espaço acima da tabela */
+    border-collapse: collapse; /* Garante que as bordas dos células se toquem */
+}
+
+.table th, .table td {
+    padding: 8px; /* Espaçamento interno para células da tabela */
+    border: 1px solid #ddd; /* Bordas sutil para as células */
+}
+
+.pagination {
+    margin-top: 10px; /* Espaço acima da paginação */
+    justify-content: center; /* Centraliza a paginação */
+}
