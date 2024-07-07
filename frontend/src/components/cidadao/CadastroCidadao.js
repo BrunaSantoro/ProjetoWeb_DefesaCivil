@@ -6,7 +6,6 @@ import { postCidadao } from '../../services/cidadao/cidadaoService';
 import { fetchCep } from '../../services/endereco/cepService';
 
 const CadastroCidadao = () => {
-  // State para controlar os valores dos campos do formulário
   const [nome, setNome] = useState('');
   const [cpf, setCpf] = useState('');
   const [rg, setRg] = useState('');
@@ -19,15 +18,12 @@ const CadastroCidadao = () => {
   const [estado, setEstado] = useState('');
   const [telefone, setTelefone] = useState('');
 
-  // Para o CEP automático
   const [cepLength, setCepLength] = useState(0);
   const [cepNotFound, setCepNotFound] = useState(false);
 
-  // Função para lidar com o envio do formulário
   const handleCadastro = async (event) => {
-    event.preventDefault(); // Previne o comportamento padrão do formulário
+    event.preventDefault();
 
-    // Cria um objeto com os dados do novo cidadão
     const cidadao = {
       name: nome,
       cpf: cpf,
@@ -43,10 +39,7 @@ const CadastroCidadao = () => {
     };
 
     try {
-      // Chama o serviço para enviar os dados do cidadão
       const novoCidadao = await postCidadao(cidadao);
-
-      // Limpa os campos do formulário após o cadastro
       setNome('');
       setCpf('');
       setRg('');
@@ -58,11 +51,8 @@ const CadastroCidadao = () => {
       setCidade('');
       setEstado('');
       setTelefone('');
-
-      // Exibe mensagem de sucesso, se necessário
       alert('Cidadão cadastrado com sucesso!');
     } catch (error) {
-      // Exibe mensagem de erro, se houver falha no cadastro
       alert('Erro ao cadastrar cidadão: ' + error.message);
     }
   };
@@ -81,26 +71,24 @@ const CadastroCidadao = () => {
             setBairro(data.bairro);
             setCidade(data.localidade);
             setEstado(data.uf);
-            setCepNotFound(false); // CEP encontrado
+            setCepNotFound(false);
           } else {
-            // Se o CEP não for encontrado, limpe os campos de endereço e mostre a mensagem
             setRua('');
             setBairro('');
             setCidade('');
             setEstado('');
-            setCepNotFound(true); // CEP não encontrado
+            setCepNotFound(true);
           }
         } catch (error) {
           console.error('Erro ao buscar endereço:', error);
-          setCepNotFound(true); // CEP não encontrado devido a um erro
+          setCepNotFound(true);
         }
       }
     }
   };
 
-  // Função para cancelar o cadastro
   const cancelar = () => {
-    window.history.back(); // Volta para a página anterior
+    window.history.back();
   };
 
   return (
@@ -109,7 +97,7 @@ const CadastroCidadao = () => {
       <Container className="bd m-0 border-0">
         <h3 className="my-3">Cadastro de Cidadão</h3>
         <hr className="mb-4" />
-        <Form id="cadastroForm" onSubmit={handleCadastro}>
+        <Form id="cadastroForm" onSubmit={handleCadastro} className="form-container">
           <Row className="mb-4">
             <Col md={12}>
               <Form.Group controlId="formNome">

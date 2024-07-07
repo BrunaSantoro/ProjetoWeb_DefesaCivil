@@ -32,7 +32,7 @@
 
 h3 {
   margin-bottom: 20px;
-  font-size: 16px; /* Diminuir o tamanho da fonte */
+  font-size: 20px; /* Diminuir o tamanho da fonte */
 }
 
 hr {
@@ -84,6 +84,7 @@ hr {
 .acontecimento p, .atendimento p {
   font-size: 1em;
   margin-bottom: 10px;
+
 }
 
 .acontecimento p strong, .atendimento p strong {
@@ -113,7 +114,7 @@ hr {
 
 .acontecimento p, .atendimento p {
   margin-bottom: 5px;
-  font-size: 16px; /* Definir fonte para 16px */
+  font-size: 16px;
 }
 
 .acontecimento p:nth-of-type(odd), .atendimento p:nth-of-type(odd) {
@@ -122,8 +123,4 @@ hr {
 
 .acontecimento p:nth-of-type(even), .atendimento p:nth-of-type(even) {
   margin-left: 15px; /* Ajuste a margem esquerda para alinhar abaixo do título */
-}
-
-div.tooltip .tooltip-inner {
-  border: none !important;
 }

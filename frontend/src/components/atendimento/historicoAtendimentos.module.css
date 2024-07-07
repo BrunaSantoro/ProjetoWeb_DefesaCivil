@@ -107,3 +107,32 @@ hr {
   margin-top: 20px;
 }
 
+/* Estilos adicionais para o modal e formatação de visualização e edição */
+.modal-content.no-border {
+  border: none;
+}
+
+.modal-body .atendimento,
+.modal-body .acontecimento {
+  margin-bottom: 20px;
+}
+
+.modal-body .atendimento p,
+.modal-body .acontecimento p {
+  margin: 0 0 10px;
+}
+
+.modal-body .atendimento h5,
+.modal-body .acontecimento h5 {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.modal-body .form-group {
+  margin-bottom: 15px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+}

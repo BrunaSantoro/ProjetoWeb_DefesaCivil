@@ -1,3 +1,17 @@
+:root {
+  --body-color: #F9FAFC; /* Cor de fundo atualizada */
+  --sidebar-color: #FFF;
+  --primary-color: #BBD8F0;
+  --primary-color-light: #F6F5FF;
+  --toggle-color: #DDD;
+  --icon-color: #95BFE1;
+  --text-color: #696262;
+  --special-text-color: #252525;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.3s ease;
+  --tran-05: all 0.3s ease;
+}
+
 .cadastro-cidadao {
   .containerCadastroCidadao {
     max-width: 900px;
@@ -56,10 +70,8 @@
   }
 }
 
-/* Adicionando estilos para o layout semelhante ao CadastroAcontecimento */
-
 .bd {
-  background-color: #FFF; /* Ajuste a cor de fundo do container de conteúdo se necessário */
+  background-color: #FFF; 
 }
 
 h3 {
@@ -103,4 +115,5 @@ hr {
   margin-bottom: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 900px; /* Adicionado para ajustar a largura máxima */
 }

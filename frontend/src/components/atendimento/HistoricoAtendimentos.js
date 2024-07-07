@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Pagination, Form, Button, Container, Row, Col, Dropdown, DropdownButton, Modal } from 'react-bootstrap';
-import { fetchAtendimentos } from '../../services/atendimento/atendimentoService';
-import AtendimentoPopup from './AtendimentoPopup';
+import { Table, Pagination, Form, Button, Container, Row, Col, Dropdown, DropdownButton, Modal, Alert } from 'react-bootstrap';
+import { fetchAtendimentos, deleteAtendimento, updateAtendimento } from '../../services/atendimento/atendimentoService';
 import './historicoAtendimentos.module.css';
 
 const HistoricoAtendimentos = () => {
@@ -11,6 +10,8 @@ const HistoricoAtendimentos = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [selectedAtendimento, setSelectedAtendimento] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [deleteMessage, setDeleteMessage] = useState('');
 
   const loadAtendimentos = async (page = 1) => {
     try {
@@ -36,8 +37,9 @@ const HistoricoAtendimentos = () => {
     loadAtendimentos(pageNumber);
   };
 
-  const handleOpenPopup = (atendimento) => {
+  const handleOpenPopup = (atendimento, editing = false) => {
     setSelectedAtendimento(atendimento);
+    setIsEditing(editing);
     setShowPopup(true);
   };
 
@@ -46,11 +48,36 @@ const HistoricoAtendimentos = () => {
     setSelectedAtendimento(null);
   };
 
+  const handleDelete = async (id) => {
+    try {
+      await deleteAtendimento(id);
+      setAtendimentos(atendimentos.filter(atendimento => atendimento._id !== id));
+      setDeleteMessage('Atendimento excluído com sucesso!');
+      setTimeout(() => setDeleteMessage(''), 3000); // Limpa a mensagem após 3 segundos
+    } catch (error) {
+      console.error('Erro ao deletar atendimento:', error);
+      setDeleteMessage('Erro ao deletar atendimento: ' + error.message);
+      setTimeout(() => setDeleteMessage(''), 3000); // Limpa a mensagem após 3 segundos
+    }
+  };
+
+  const handleSave = async () => {
+    try {
+      await updateAtendimento(selectedAtendimento._id, selectedAtendimento);
+      loadAtendimentos(currentPage);
+      setIsEditing(false);
+      setShowPopup(false);
+    } catch (error) {
+      console.error('Erro ao atualizar atendimento:', error);
+    }
+  };
+
   return (
     <Container className="bd">
       <h3 className="my-3 text-left">Histórico de Atendimentos</h3>
       <hr className="mb-4" />
       <h5>Filtros</h5>
+      {deleteMessage && <Alert variant="success">{deleteMessage}</Alert>}
       <Form onSubmit={handleSearch} className="mb-4">
         <Row>
           <Col md={3}>
@@ -64,27 +91,6 @@ const HistoricoAtendimentos = () => {
               />
             </Form.Group>
           </Col>
-          {/* >>>>>>>>>> FILTRO
-           <Col md={3}>
-            <Form.Group controlId="formStartDate">
-              <Form.Label>Data de Início</Form.Label>
-              <Form.Control
-                type="date"
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)}
-              />
-            </Form.Group>
-          </Col>
-          <Col md={3}>
-            <Form.Group controlId="formEndDate">
-              <Form.Label>Data de Fim</Form.Label>
-              <Form.Control
-                type="date"
-                value={endDate}
-                onChange={(e) => setEndDate(e.target.value)}
-              />
-            </Form.Group>
-          </Col> */}
           <Col md={3} className="d-flex align-items-end">
             <Button variant="primary" type="submit" style={{ backgroundColor: '#2987C0', borderColor: '#2987C0' }}>
               Filtrar
@@ -119,11 +125,11 @@ const HistoricoAtendimentos = () => {
               <td className="text-center">{atendimento.atendente}</td>
               <td className="text-center">
                 <DropdownButton id="dropdown-basic-button" title="Opções" className="acao-button">
-                  <Dropdown.Item onClick={() => handleOpenPopup(atendimento)}>Visualizar</Dropdown.Item>
-                  <Dropdown.Item href="#/editar">Editar</Dropdown.Item>
-                  <Dropdown.Item href="#/deletar">Deletar</Dropdown.Item>
-                  <Dropdown.Item href="#/deletar">Relatório de atendimento</Dropdown.Item>
-                  <Dropdown.Item href="#/deletar">Recibo dos itens entregues</Dropdown.Item>
+                  <Dropdown.Item onClick={() => handleOpenPopup(atendimento, false)}>Visualizar</Dropdown.Item>
+                  <Dropdown.Item onClick={() => handleOpenPopup(atendimento, true)}>Editar</Dropdown.Item>
+                  <Dropdown.Item onClick={() => handleDelete(atendimento._id)}>Deletar</Dropdown.Item>
+                  <Dropdown.Item href="#/relatorio">Relatório de atendimento</Dropdown.Item>
+                  <Dropdown.Item href="#/recibo">Recibo dos itens entregues</Dropdown.Item>
                 </DropdownButton>
               </td>
             </tr>
@@ -144,7 +150,132 @@ const HistoricoAtendimentos = () => {
         <Pagination.Next onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages} />
       </Pagination>
 
-      {showPopup && <AtendimentoPopup atendimento={selectedAtendimento} onClose={handleClosePopup} />}
+      {showPopup && (
+        <Modal show={showPopup} onHide={handleClosePopup} centered>
+          <Modal.Header closeButton>
+            <Modal.Title>{isEditing ? "Editar Atendimento" : "Informações do Atendimento"}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div className="modal-content no-border">
+              <div className="atendimento">
+                <h5>Atendimento</h5>
+                {isEditing ? (
+                  <>
+                    <p><strong>N° do Protocolo:</strong> {selectedAtendimento.nProtocolo}</p>
+                    <Row>
+                      <Col md={6}>
+                        <Form.Group controlId="formSubgrupo">
+                          <Form.Label>Subgrupo</Form.Label>
+                          <Form.Control
+                            type="text"
+                            name="subgrupo"
+                            value={selectedAtendimento.subgrupo}
+                            onChange={(e) => setSelectedAtendimento({ ...selectedAtendimento, subgrupo: e.target.value })}
+                          />
+                        </Form.Group>
+                      </Col>
+                      <Col md={6}>
+                        <Form.Group controlId="formTipo">
+                          <Form.Label>Tipo</Form.Label>
+                          <Form.Control
+                            type="text"
+                            name="tipo"
+                            value={selectedAtendimento.tipo}
+                            onChange={(e) => setSelectedAtendimento({ ...selectedAtendimento, tipo: e.target.value })}
+                          />
+                        </Form.Group>
+                      </Col>
+                      <Col md={6}>
+                        <Form.Group controlId="formCobrade">
+                          <Form.Label>COBRADE</Form.Label>
+                          <Form.Control
+                            type="text"
+                            name="cobrade"
+                            value={selectedAtendimento.cobrade}
+                            onChange={(e) => setSelectedAtendimento({ ...selectedAtendimento, cobrade: e.target.value })}
+                          />
+                        </Form.Group>
+                      </Col>
+                      <Col md={6}>
+                        <Form.Group controlId="formDataAtendimento">
+                          <Form.Label>Data do atendimento</Form.Label>
+                          <Form.Control
+                            type="date"
+                            name="dataAtendimento"
+                            value={selectedAtendimento.dataAtendimento}
+                            onChange={(e) => setSelectedAtendimento({ ...selectedAtendimento, dataAtendimento: e.target.value })}
+                          />
+                        </Form.Group>
+                      </Col>
+                      <Col md={6}>
+                        <Form.Group controlId="formBairro">
+                          <Form.Label>Bairro</Form.Label>
+                          <Form.Control
+                            type="text"
+                            name="bairro"
+                            value={selectedAtendimento.bairro}
+                            onChange={(e) => setSelectedAtendimento({ ...selectedAtendimento, bairro: e.target.value })}
+                          />
+                        </Form.Group>
+                      </Col>
+                      <Col md={6}>
+                        <Form.Group controlId="formCidade">
+                          <Form.Label>Cidade</Form.Label>
+                          <Form.Control
+                            type="text"
+                            name="cidade"
+                            value={selectedAtendimento.cidade}
+                            onChange={(e) => setSelectedAtendimento({ ...selectedAtendimento, cidade: e.target.value })}
+                          />
+                        </Form.Group>
+                      </Col>
+                      <Col md={6}>
+                        <Form.Group controlId="formAtendente">
+                          <Form.Label>Atendente</Form.Label>
+                          <Form.Control
+                            type="text"
+                            name="atendente"
+                            value={selectedAtendimento.atendente}
+                            onChange={(e) => setSelectedAtendimento({ ...selectedAtendimento, atendente: e.target.value })}
+                          />
+                        </Form.Group>
+                      </Col>
+                    </Row>
+                  </>
+                ) : (
+                  <>
+                    <p><strong>N° do Protocolo:</strong> {selectedAtendimento.nProtocolo}</p>
+                    <Row>
+                      <Col md={6}>
+                        <p><strong>Subgrupo:</strong> {selectedAtendimento.subgrupo}</p>
+                        <p><strong>Tipo:</strong> {selectedAtendimento.tipo}</p>
+                      </Col>
+                      <Col md={6}>
+                        <p><strong>COBRADE:</strong> {selectedAtendimento.cobrade}</p>
+                        <p><strong>Data do atendimento:</strong> {selectedAtendimento.dataAtendimento}</p>
+                      </Col>
+                      <Col md={6}>
+                        <p><strong>Bairro:</strong> {selectedAtendimento.bairro}</p>
+                        <p><strong>Cidade:</strong> {selectedAtendimento.cidade}</p>
+                      </Col>
+                      <Col md={6}>
+                        <p><strong>Atendente:</strong> {selectedAtendimento.atendente}</p>
+                      </Col>
+                    </Row>
+                  </>
+                )}
+              </div>
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            {isEditing ? (
+              <Button variant="primary" onClick={handleSave}>Salvar</Button>
+            ) : (
+              <Button variant="secondary" onClick={handleClosePopup}>Fechar</Button>
+            )}
+          </Modal.Footer>
+        </Modal>
+      )}
     </Container>
   );
 };

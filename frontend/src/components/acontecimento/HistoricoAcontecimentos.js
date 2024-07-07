@@ -55,7 +55,7 @@ const HistoricoAcontecimentos = () => {
       await deleteAcontecimento(id);
       setAcontecimentos(acontecimentos.filter(acontecimento => acontecimento._id !== id));
       setDeleteMessage('Atendimento excluído com sucesso!');
-      setTimeout(() => setDeleteMessage(''), 3000);
+      setTimeout(() => setDeleteMessage(''), 5000);
     } catch (error) {
       console.error('Erro ao deletar acontecimento:', error);
     }

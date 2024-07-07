@@ -13,7 +13,6 @@ body {
   flex-grow: 1;
   padding: 20px;
   background-color: #F9FAFC;
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -40,7 +39,7 @@ body {
   border-right: 1px solid #dee2e6;
   transition: width 0.3s;
   z-index: 1000; /* Garantir que a sidebar esteja no topo */
-  overflow-y: auto; /* Adicionar scrollbar caso necessário */
+
 }
 
 .sidebar.closed {
@@ -90,6 +89,3 @@ body {
   width: 100%;
 }
 
-.tooltip-inner {
-  border: none !important;
-}

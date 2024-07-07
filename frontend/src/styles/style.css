@@ -22,7 +22,3 @@ body {
 input:focus, button:focus {
   outline: none;
 }
-
-.tooltip-inner {
-  border: none !important;
-}
