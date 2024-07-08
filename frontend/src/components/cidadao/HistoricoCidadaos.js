@@ -19,6 +19,7 @@ const HistoricoCidadaos = () => {
   const loadCidadaos = async (page = 1) => {
     try {
       const data = await fetchCidadaos(query, startDate, endDate);
+      console.log('Data fetched:', data);
       setCidadaos(data);
       setCurrentPage(page);
       setTotalPages(Math.ceil(data.length / 10));

@@ -20,14 +20,8 @@ const HistoricoUsuarios = () => {
     try {
       const data = await fetchUsuarios();
       console.log('Data fetched:', data); // Log para verificar os dados retornados
-      setUsuarios(data.usuarios);
-      if (data && data.usuarios) {
-        setUsuarios(data.usuarios);
-        setTotalPages(Math.ceil(data.total / 10));
-      } else {
-        setUsuarios([]);
-        setTotalPages(1);
-      }
+      setUsuarios(data);
+      setTotalPages(Math.ceil(data.total / 10));
       setCurrentPage(page);
     } catch (error) {
       console.error('Erro ao buscar usuários:', error);
@@ -140,7 +134,7 @@ const HistoricoUsuarios = () => {
           </tr>
         </thead>
         <tbody>
-          {usuarios.length > 0 ? (
+        {usuarios && usuarios.length > 0 ? (
             usuarios.map((usuario) => (
               <tr key={usuario._id}>
                 <td className="text-center">{usuario.username}</td>
