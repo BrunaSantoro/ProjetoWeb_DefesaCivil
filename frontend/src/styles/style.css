@@ -22,3 +22,98 @@ body {
 input:focus, button:focus {
   outline: none;
 }
+
+/* Sobrescrever a cor principal do Bootstrap */
+.btn-primary {
+  background-color: #2987C0 !important;
+  border-color: #2987C0 !important;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+  background-color: #2477A6 !important; /* Cor para o estado hover/focus */
+  border-color: #2477A6 !important;
+}
+
+.main-content {
+  display: flex;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #F9FAFC;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-content:not(.no-sidebar) .content {
+  margin-left: 250px; /* Compensar a largura da sidebar */
+  margin-top: 65px; /* Compensar a altura da Navbar */
+  transition: margin-left 0.3s;
+}
+
+.content.full-width {
+  margin-left: 0;
+}
+
+.sidebar {
+  height: calc(100vh - 65px); /* Ajustar para ficar abaixo da Navbar */
+  position: fixed;
+  top: 65px; /* Altura da Navbar */
+  left: 0;
+  width: 250px;
+  background-color: #f8f9fa;
+  padding-top: 8px;
+  border-right: 1px solid #dee2e6;
+  transition: width 0.3s;
+  z-index: 1000; /* Garantir que a sidebar esteja no topo */
+}
+
+.sidebar.closed {
+  width: 60px;
+}
+
+.toggle-btn {
+  position: absolute;
+  top: 20px; /* Ajuste conforme necessário */
+  right: 12px;
+  background-color: #479cd4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.sidebar .nav-link {
+  display: flex;
+  align-items: center;
+  color: #005699;
+}
+
+.sidebar .nav-link span {
+  margin-left: 10px;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background-color: #BBD8F0;
+  color: white;
+  border-radius: 5px;
+}
+
+.sidebar.closed ~ .content {
+  margin-left: 70px; /* Compensar a largura da sidebar fechada */
+}
+
+.container {
+  padding: 20px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  max-width: 900px; /* Largura máxima para centralizar o conteúdo */
+  width: 100%;
+}
+

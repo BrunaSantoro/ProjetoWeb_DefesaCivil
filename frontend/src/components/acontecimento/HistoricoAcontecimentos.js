@@ -82,7 +82,7 @@ const HistoricoAcontecimentos = () => {
         <Row>
           <Col md={3}>
             <Form.Group controlId="formSearchTerm">
-              <Form.Label>Buscar</Form.Label>
+              <Form.Label>Pesquisar</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Termo de busca"
@@ -142,9 +142,9 @@ const HistoricoAcontecimentos = () => {
               <td className="text-center">{acontecimento.cidadaoResponsavel}</td>
               <td className="text-center">{`${acontecimento.rua}, ${acontecimento.bairro}, ${acontecimento.cidade}, ${acontecimento.estado}`}</td>
               <td className="text-center">
-                <DropdownButton id="dropdown-basic-button" title="Opções" className="acao-button" style={{ backgroundColor: '#78A6C7'}}>
+                <DropdownButton id="dropdown-basic-button" title="Opções" className="acao-button" >
                   <Dropdown.Item onClick={() => handleShowModal(acontecimento, false)}>Visualizar</Dropdown.Item>
-                  <Dropdown.Item onClick={() => handleShowModal(acontecimento, true)}>Editar</Dropdown.Item>
+                  {/* <Dropdown.Item onClick={() => handleShowModal(acontecimento, true)}>Editar</Dropdown.Item> */}
                   <Dropdown.Item onClick={() => handleDelete(acontecimento._id)}>Deletar</Dropdown.Item>
                 </DropdownButton>
               </td>
@@ -323,10 +323,22 @@ const HistoricoAcontecimentos = () => {
                         />
                       </Form.Group>
                     </Col>
+                    <Col md={6}>
+                      <Form.Group controlId="formNumero">
+                        <Form.Label>Número</Form.Label>
+                        <Form.Control
+                          type="text"
+                          name="numero"
+                          value={selectedAcontecimento.numero}
+                          onChange={(e) => setSelectedAcontecimento({ ...selectedAcontecimento, numero: e.target.value })}
+                        />
+                      </Form.Group>
+                    </Col>
                   </Row>
                 ) : (
                   <>
                     <p><strong>Endereço da ocorrência:</strong> {`${selectedAcontecimento.rua}, ${selectedAcontecimento.bairro}, ${selectedAcontecimento.cidade}, ${selectedAcontecimento.estado}`}</p>
+                    <p><strong>Número da residência:</strong> {selectedAcontecimento.numero}</p>
                   </>
                 )}
               </div>

@@ -6,6 +6,8 @@ import './historicoAtendimentos.module.css';
 const HistoricoAtendimentos = () => {
   const [atendimentos, setAtendimentos] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [selectedAtendimento, setSelectedAtendimento] = useState(null);
@@ -15,7 +17,7 @@ const HistoricoAtendimentos = () => {
 
   const loadAtendimentos = async (page = 1) => {
     try {
-      const data = await fetchAtendimentos(searchTerm, page, 10);
+      const data = await fetchAtendimentos(searchTerm, page, 10, startDate, endDate);
       setAtendimentos(data.data);
       setCurrentPage(data.page);
       setTotalPages(Math.ceil(data.total / data.limit));
@@ -26,7 +28,7 @@ const HistoricoAtendimentos = () => {
 
   useEffect(() => {
     loadAtendimentos();
-  }, [searchTerm, currentPage]);
+  }, [searchTerm, startDate, endDate, currentPage]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -34,7 +36,7 @@ const HistoricoAtendimentos = () => {
   };
 
   const handlePageChange = (pageNumber) => {
-    loadAtendimentos(pageNumber);
+    setCurrentPage(pageNumber);
   };
 
   const handleOpenPopup = (atendimento, editing = false) => {
@@ -82,12 +84,32 @@ const HistoricoAtendimentos = () => {
         <Row>
           <Col md={3}>
             <Form.Group controlId="formSearchTerm">
-              <Form.Label>Buscar</Form.Label>
+              <Form.Label>Pesquisar</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Termo de busca"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </Form.Group>
+          </Col>
+          <Col md={3}>
+            <Form.Group controlId="formStartDate">
+              <Form.Label>Data de Início</Form.Label>
+              <Form.Control
+                type="date"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+              />
+            </Form.Group>
+          </Col>
+          <Col md={3}>
+            <Form.Group controlId="formEndDate">
+              <Form.Label>Data de Fim</Form.Label>
+              <Form.Control
+                type="date"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
               />
             </Form.Group>
           </Col>
@@ -151,55 +173,54 @@ const HistoricoAtendimentos = () => {
       </Pagination>
 
       {showPopup && (
-       <Modal show={showPopup} onHide={handleClosePopup} centered>
-       <Modal.Header closeButton>
-         <Modal.Title>{isEditing ? "Editar Atendimento" : "Informações do Atendimento"}</Modal.Title>
-       </Modal.Header>
-       <Modal.Body>
-         <Container>
-           <Row>
-           <Col md={4} className="section">
-              <div className="section-content">
-                 <h5 className="section-title">Acontecimento</h5>
-                 <p><span className="dot dot-blue"></span>Subgrupo: {selectedAtendimento.subgrupo}</p>
-                 <p><span className="dot dot-blue"></span>Tipo: {selectedAtendimento.tipo}</p>
-                 <p><span className="dot dot-blue"></span>Evento: {selectedAtendimento.evento}</p>
-                 <p><span className="dot dot-blue"></span>COBRADE: {selectedAtendimento.cobrade}</p>
-                <p><span className="dot dot-blue"></span>N° do protocolo: {selectedAtendimento.nProtocolo}</p>
-               </div>
-             </Col>
-             <Col md={4} className="section">
-              <div className="section-content">
-                 <h5 className="section-title">Família/Cidadãos</h5>
-                 <p><span className="dot dot-red"></span>Nome do solicitante: {selectedAtendimento.nomeSolicitante}</p>
-                 <p><span className="dot dot-red"></span>CPF do solicitante: {selectedAtendimento.cpfSolicitante}</p>
-                 <p><span className="dot dot-red"></span>RG do solicitante: {selectedAtendimento.rgSolicitante}</p>
-                 <p><span className="dot dot-red"></span>Telefone do solicitante: {selectedAtendimento.telefoneSolicitante}</p>
-                 <p><span className="dot dot-red"></span>Número de pessoas no imóvel: {selectedAtendimento.numeroPessoas}</p>
-               </div>
-             </Col>
-             <Col md={4} className="section">
-              <div className="section-content">
-                 <h5 className="section-title">Atendimento</h5>
-                 <p><span className="dot dot-green"></span>Nome do atendente: {selectedAtendimento.nomeAtendente}</p>
-                 <p><span className="dot dot-green"></span>Código de identificação: {selectedAtendimento.codigoIdentificacao}</p>
-                 <p><span className="dot dot-green"></span>Data da visita: {selectedAtendimento.dataVisita}</p>
-                 <p><span className="dot dot-green"></span>Ocorrência: {selectedAtendimento.ocorrencia}</p>
-                 <p><span className="dot dot-green"></span>Endereço da ocorrência: {selectedAtendimento.enderecoOcorrencia}</p>
-               </div>
-             </Col>
-           </Row>
-         </Container>
-       </Modal.Body>
-       <Modal.Footer>
-         {isEditing ? (
-           <Button variant="primary" onClick={handleSave}>Salvar</Button>
-         ) : (
-           <Button variant="secondary" onClick={handleClosePopup}>Fechar</Button>
-         )}
-       </Modal.Footer>
-     </Modal>
-     
+        <Modal show={showPopup} onHide={handleClosePopup} centered>
+          <Modal.Header closeButton>
+            <Modal.Title>{isEditing ? "Editar Atendimento" : "Informações do Atendimento"}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Container>
+              <Row>
+                <Col md={4} className="section">
+                  <div className="section-content">
+                    <h5 className="section-title">Acontecimento</h5>
+                    <p><span className="dot dot-blue"></span>Subgrupo: {selectedAtendimento.subgrupo}</p>
+                    <p><span className="dot dot-blue"></span>Tipo: {selectedAtendimento.tipo}</p>
+                    <p><span className="dot dot-blue"></span>Evento: {selectedAtendimento.evento}</p>
+                    <p><span className="dot dot-blue"></span>COBRADE: {selectedAtendimento.cobrade}</p>
+                    <p><span className="dot dot-blue"></span>N° do protocolo: {selectedAtendimento.nProtocolo}</p>
+                  </div>
+                </Col>
+                <Col md={4} className="section">
+                  <div className="section-content">
+                    <h5 className="section-title">Família/Cidadãos</h5>
+                    <p><span className="dot dot-red"></span>Nome do solicitante: {selectedAtendimento.nomeSolicitante}</p>
+                    <p><span className="dot dot-red"></span>CPF do solicitante: {selectedAtendimento.cpfSolicitante}</p>
+                    <p><span className="dot dot-red"></span>RG do solicitante: {selectedAtendimento.rgSolicitante}</p>
+                    <p><span className="dot dot-red"></span>Telefone do solicitante: {selectedAtendimento.telefoneSolicitante}</p>
+                    <p><span className="dot dot-red"></span>Número de pessoas no imóvel: {selectedAtendimento.numeroPessoas}</p>
+                  </div>
+                </Col>
+                <Col md={4} className="section">
+                  <div className="section-content">
+                    <h5 className="section-title">Atendimento</h5>
+                    <p><span className="dot dot-green"></span>Nome do atendente: {selectedAtendimento.nomeAtendente}</p>
+                    <p><span className="dot dot-green"></span>Código de identificação: {selectedAtendimento.codigoIdentificacao}</p>
+                    <p><span className="dot dot-green"></span>Data da visita: {selectedAtendimento.dataVisita}</p>
+                    <p><span className="dot dot-green"></span>Ocorrência: {selectedAtendimento.ocorrencia}</p>
+                    <p><span className="dot dot-green"></span>Endereço da ocorrência: {selectedAtendimento.enderecoOcorrencia}</p>
+                  </div>
+                </Col>
+              </Row>
+            </Container>
+          </Modal.Body>
+          <Modal.Footer>
+            {isEditing ? (
+              <Button variant="primary" onClick={handleSave}>Salvar</Button>
+            ) : (
+              <Button variant="secondary" onClick={handleClosePopup}>Fechar</Button>
+            )}
+          </Modal.Footer>
+        </Modal>
       )}
     </Container>
   );

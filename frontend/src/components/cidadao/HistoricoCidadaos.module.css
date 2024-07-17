@@ -1,5 +1,5 @@
 :root {
-  --body-color: #F9FAFC;
+  --body-color: #F9FAFC; /* Cor de fundo atualizada */
   --sidebar-color: #FFF;
   --primary-color: #BBD8F0;
   --primary-color-light: #F6F5FF;
@@ -106,4 +106,3 @@ hr {
 .pagination {
   margin-top: 20px;
 }
-

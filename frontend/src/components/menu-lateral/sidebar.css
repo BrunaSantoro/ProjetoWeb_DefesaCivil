@@ -48,7 +48,6 @@ body {
     align-items: center;
     margin-top: 10px;
     justify-content: center;
-    
 }
 
 .sidebar .icon {
@@ -76,7 +75,6 @@ body {
 .sidebar .nav-link:hover .special-text,
 .sidebar .nav-link.active .special-text {
     color: white;
-    
 }
 
 .sidebar.close .text {
@@ -102,7 +100,6 @@ body {
 .sidebar .nav-link.active .icon,
 .sidebar .nav-link.active .text {
     color: white;
-    
 }
 
 .sidebar .ml-3 .nav-link {
@@ -134,4 +131,23 @@ body {
 .sidebar.close ~ .home {
     left: 88px;
     width: calc(100% - 88px);
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 60px;
+    }
+    .sidebar.close {
+        width: 60px;
+    }
+    .sidebar .text {
+        display: none;
+    }
+    .home {
+        left: 60px;
+        width: calc(100% - 60px);
+    }
+    .toggle-btn {
+        display: none;
+    }
 }

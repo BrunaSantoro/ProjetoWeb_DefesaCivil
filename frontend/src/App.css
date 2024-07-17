@@ -9,6 +9,37 @@ body {
   display: flex;
 }
 
+.btn-primary {
+  background-color: #2987C0 !important;
+  border-color: #2987C0 !important;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+  background-color: #2477A6 !important; /* Cor para o estado hover/focus */
+  border-color: #2477A6 !important;
+}
+
+/* Estilo dos botões de paginação */
+.pagination .page-link {
+  color: #2987C0; /* Cor do texto */
+}
+
+.pagination .page-link:hover, .pagination .page-link:focus {
+  background-color: #2477A6; /* Cor do fundo ao passar o mouse */
+  border-color: #2477A6;
+  color: #fff; /* Cor do texto ao passar o mouse */
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #2987C0; /* Cor do fundo do item ativo */
+  border-color: #2987C0;
+  color: #fff; /* Cor do texto do item ativo */
+}
+
+.pagination .page-item.disabled .page-link {
+  color: #ccc; /* Cor do texto do item desativado */
+}
+
 .content {
   flex-grow: 1;
   padding: 20px;
@@ -39,7 +70,6 @@ body {
   border-right: 1px solid #dee2e6;
   transition: width 0.3s;
   z-index: 1000; /* Garantir que a sidebar esteja no topo */
-
 }
 
 .sidebar.closed {
@@ -88,4 +118,3 @@ body {
   max-width: 900px; /* Largura máxima para centralizar o conteúdo */
   width: 100%;
 }
-

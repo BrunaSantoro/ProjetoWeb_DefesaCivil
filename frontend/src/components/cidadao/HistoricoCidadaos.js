@@ -4,7 +4,7 @@ import { fetchCidadaos, deleteCidadao, updateCidadao } from '../../services/cida
 import './HistoricoCidadaos.module.css';
 
 const HistoricoCidadaos = () => {
-  const [cidadaos, setCidadaos] = useState([]);
+  const [cidadaos, setCidadaos] = useState([]); // Estado inicial vazio
   const [query, setQuery] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
@@ -30,7 +30,7 @@ const HistoricoCidadaos = () => {
 
   useEffect(() => {
     loadCidadaos();
-  }, []);
+  }, [loadCidadaos]); // Incluir a função como dependência
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -87,7 +87,7 @@ const HistoricoCidadaos = () => {
         <Row>
           <Col md={3}>
             <Form.Group controlId="formSearchQuery">
-              <Form.Label>Buscar</Form.Label>
+              <Form.Label>Pesquisar</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Nome ou CPF"
@@ -118,7 +118,7 @@ const HistoricoCidadaos = () => {
           </Col>
           <Col md={3} className="d-flex align-items-end">
             <Button variant="primary" type="submit" style={{ backgroundColor: '#2987C0', borderColor: '#2987C0' }}>
-              Buscar
+              Filtrar
             </Button>
           </Col>
         </Row>
@@ -150,6 +150,7 @@ const HistoricoCidadaos = () => {
         </tbody>
       </Table>
       <Pagination className="justify-content-start">
+        <Pagination.Prev onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1} />
         {Array.from({ length: totalPages }, (_, index) => (
           <Pagination.Item
             key={index + 1}
@@ -159,6 +160,7 @@ const HistoricoCidadaos = () => {
             {index + 1}
           </Pagination.Item>
         ))}
+        <Pagination.Next onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages} />
       </Pagination>
 
       {selectedCidadao && (
