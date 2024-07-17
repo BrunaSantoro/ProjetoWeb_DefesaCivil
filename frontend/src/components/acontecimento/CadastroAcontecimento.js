@@ -21,6 +21,7 @@ const CadastroAcontecimento = () => {
     bairro: '',
     cidade: '',
     estado: '',
+    numero: '',
     pendente: true
   });
 
@@ -52,7 +53,7 @@ const CadastroAcontecimento = () => {
     setShowModal(true);
     handleSearch();
   };
-  
+
   const handleSelectCidadao = (cidadao) => {
     setSelectedCidadao({ nome: cidadao.name, cpf: cidadao.cpf });
     setFormData((prevFormData) => ({
@@ -97,7 +98,7 @@ const CadastroAcontecimento = () => {
         ...prevFormData,
         cep: value
       }));
-  
+
       if (value.length === 8) {
         try {
           const data = await fetchCep(value);
@@ -162,10 +163,9 @@ const CadastroAcontecimento = () => {
 
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  
+
   const [showSuccessToast, setShowSuccessToast] = useState(false);
   const [showErrorToast, setShowErrorToast] = useState(false);
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -189,7 +189,8 @@ const CadastroAcontecimento = () => {
         rua: '',
         bairro: '',
         cidade: '',
-        estado: ''
+        estado: '',
+        numero: ''
       })
     } catch (error) {
       setErrorMessage('Erro ao criar acontecimento: ' + error.message);
@@ -198,7 +199,6 @@ const CadastroAcontecimento = () => {
       setTimeout(() => setShowErrorToast(false), 3000);
     }
   };
-  
 
   const getGrupoOptions = (classe) => {
     const options = {
@@ -382,8 +382,8 @@ const CadastroAcontecimento = () => {
       'PA - SubTipo não Definido (COBRADE)': '2.2.4.6.0',
       'II - SubTipo não Definido (COBRADE)': '2.3.1.1.0',
       'IR - SubTipo não Definido (COBRADE)': '2.3.1.2.0',
-      'CE - SubTipo não Definido (COBRADE)': '2.4.1.0.0',
-      'CB - SubTipo não Definido (COBRADE)': '2.4.2.0.0',
+      'CE - Tipo Não Definido (COBRADE)': '2.4.1.0.0',
+      'CB - Tipo Não Definido (COBRADE)': '2.4.2.0.0',
       'TR - Tipo Não Definido (COBRADE)': '2.5.1.0.0',
       'TF - Tipo Não Definido (COBRADE)': '2.5.2.0.0',
       'TA - SubTipo não Definido (COBRADE)': '2.5.3.0.0',
@@ -587,7 +587,7 @@ const CadastroAcontecimento = () => {
           </Col>
         </Row>
         <Row className="mb-4">
-          <Col md={6}>
+        <Col md={6}>
             <Form.Group controlId="formRua">
               <Form.Label>Rua</Form.Label>
               <Form.Control
@@ -598,7 +598,18 @@ const CadastroAcontecimento = () => {
               />
             </Form.Group>
           </Col>
-          <Col md={6}>
+          <Col md={2}>
+            <Form.Group controlId="formNumero">
+              <Form.Label>Número da Casa</Form.Label>
+              <Form.Control
+                type="text"
+                name="numero"
+                value={formData.numero || ''}
+                onChange={handleChange}
+              />
+            </Form.Group>
+          </Col>
+          <Col md={4}>
             <Form.Group controlId="formBairro">
               <Form.Label>Bairro</Form.Label>
               <Form.Control
@@ -656,7 +667,8 @@ const CadastroAcontecimento = () => {
                   rua: '',
                   bairro: '',
                   cidade: '',
-                  estado: ''
+                  estado: '',
+                  numero: ''
                 })}
                 style={{ backgroundColor: '#BAB4B4', borderColor: '#BAB4B4' }}
               >
@@ -697,14 +709,14 @@ const CadastroAcontecimento = () => {
               className="form-control"
             />
             <div className="input-group-append">
-                  <Button
-                    type="button"
-                    onClick={handleSearch}
-                    style={{ backgroundColor: '#78A6C7', borderTopLeftRadius: '0', borderBottomLeftRadius: '0' }}
-                  >
-                    Pesquisar
-                  </Button>
-                </div>
+              <Button
+                type="button"
+                onClick={handleSearch}
+                style={{ backgroundColor: '#78A6C7', borderTopLeftRadius: '0', borderBottomLeftRadius: '0' }}
+              >
+                Pesquisar
+              </Button>
+            </div>
           </div>
           <Table striped bordered hover className="mt-3">
             <thead>
